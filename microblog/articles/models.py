@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
+from tags.models import Tag
+
 
 class Article(models.Model):
     title = models.CharField(max_length=80, verbose_name=_('Title'))
@@ -11,6 +13,7 @@ class Article(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(blank=True, verbose_name=_('Image'))
     publish = models.BooleanField(default=False, verbose_name=_('Publish'))
+    tags = models.ManyToManyField(Tag, verbose_name=_('Tags'))
 
     class Meta:
         verbose_name = _('Article')
