@@ -12,6 +12,10 @@ class Article(models.Model):
     image = models.ImageField(blank=True, verbose_name=_('Image'))
     publish = models.BooleanField(default=False, verbose_name=_('Publish'))
 
+    class Meta:
+        verbose_name = _('Article')
+        verbose_name_plural = _('Articles')
+
     @property
     def desc(self):
         return self.text[:77] + '...'
