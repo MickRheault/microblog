@@ -34,4 +34,4 @@ class Article(models.Model):
 
     @property
     def desc(self):
-        return self.text[:77] + '...'
+        return self.text[:420] + '...'
