@@ -20,7 +20,7 @@ class Article(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(blank=True, verbose_name=_('Image'))
     publish = models.BooleanField(default=False, verbose_name=_('Publish'))
-    publish_date = models.DateTimeField(blank=True)
+    publish_date = models.DateTimeField(blank=True, null=True)
     tags = models.ManyToManyField(Tag, verbose_name=_('Tags'))
 
     objects = PublishedManager()
