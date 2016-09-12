@@ -4,8 +4,8 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class Tag(models.Model):
-    title = models.CharField(max_length=50, verbose_name=_('Title'))
-    slug = models.CharField(max_length=50, verbose_name=_('Slug'))
+    title = models.CharField(max_length=50, verbose_name=_('Title'), unique=True)
+    slug = models.CharField(max_length=50, verbose_name=_('Slug'), unique=True)
     created_by = models.ForeignKey(User, verbose_name=_('Created by'))
     creation_date = models.DateTimeField(auto_now_add=True)
 
