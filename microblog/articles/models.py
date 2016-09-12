@@ -13,8 +13,8 @@ class PublishedManager(models.Manager):
 
 
 class Article(models.Model):
-    title = models.CharField(max_length=80, verbose_name=_('Title'))
-    slug = models.SlugField(max_length=80, verbose_name=_('Slug'))
+    title = models.CharField(max_length=80, verbose_name=_('Title'), unique=True)
+    slug = models.SlugField(max_length=80, verbose_name=_('Slug'), unique=True)
     text = models.TextField(verbose_name=_('Text'))
     author = models.ForeignKey(User, verbose_name=_('Author'))
     creation_date = models.DateTimeField(auto_now_add=True)
