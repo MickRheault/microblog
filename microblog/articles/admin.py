@@ -7,6 +7,7 @@ from .models import Article
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'creation_date',)
     fields = ('title', 'slug', 'text', 'image', 'publish', 'tags')
+    prepopulated_fields = {'slug': ('title',)}
 
     def save_model(self, request, obj, form, change):
         obj.author = request.user
