@@ -1,15 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <hr>
-    {% for article in articles %}
-        <h1>{{ article.title }}</h1>
-        <p>{{  article.text }}</p>
-    {% endfor %}
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block main_content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {% for article in articles %}
+                <div class="post-preview">
+                    <a href="{% url 'articles:detail' article.slug %}">
+                        <h2 class="post-title">{{ article.title }}</h2>
+                        <h3 class="post-subtitle">{{ article.desc }}</h3>
+                    </a>
+                    <p class="post-meta">Posted by <a href="#">{{ article.author }}</a> on
+                        {{ article.publish_date }}</p>
+                    <p>Tags:
+                    {% for tag in article.tags.all %}
+                        {{ tag }},
+                    {% endfor %}
+                    </p>
+                </div>
+                <hr>
+                {% endfor %}
+                <!-- Pager -->
+                <ul class="pager">
+                    <li class="next">
+                        <a href="#">Older Posts &rarr;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
