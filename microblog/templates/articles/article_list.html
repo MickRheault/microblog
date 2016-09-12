@@ -10,7 +10,7 @@
                         <h2 class="post-title">{{ article.title }}</h2>
                         <h3 class="post-subtitle">{{ article.desc }}</h3>
                     </a>
-                    <p class="post-meta">Posted by <a href="#">{{ article.author }}</a> on
+                    <p class="post-meta">Posted by <a href="{% url 'author:list' article.author %}">{{ article.author }}</a> on
                         {{ article.publish_date }}</p>
                     <p>Tags:
                     {% for tag in article.tags.all %}
