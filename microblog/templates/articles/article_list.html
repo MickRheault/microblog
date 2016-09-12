@@ -14,7 +14,7 @@
                         {{ article.publish_date }}</p>
                     <p>Tags:
                     {% for tag in article.tags.all %}
-                        {{ tag }},
+                        <a href="{% url 'tag:list' tag.slug %}">{{ tag }}</a> ,
                     {% endfor %}
                     </p>
                 </div>
