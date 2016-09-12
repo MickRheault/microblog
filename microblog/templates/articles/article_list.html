@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {% for article in articles %}
+                <div class="post-preview">
+                    <a href="{% url 'articles:detail' article.slug %}">
+                        <h2 class="post-title">{{ article.title }}</h2>
+                        <h3 class="post-subtitle">{{ article.desc }}</h3>
+                    </a>
+                    <p class="post-meta">Posted by <a href="{% url 'author:list' article.author %}">{{ article.author }}</a> on
+                        {{ article.publish_date }}</p>
+                    <p>Tags:
+                    {% for tag in article.tags.all %}
+                        <a href="{% url 'tag:list' tag.slug %}">{{ tag }}</a> ,
+                    {% endfor %}
+                    </p>
+                </div>
+                <hr>
+                {% endfor %}
+                <!-- Pager -->
+                <ul class="pager">
+                    <li class="next">
+                        <a href="#">Older Posts &rarr;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

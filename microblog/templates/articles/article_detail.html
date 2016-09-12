@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block header_type %}post{% endblock %}
+{% block header_image %}http://www.freevector.com/uploads/vector/preview/6044/FreeVector-Colorful-Shapes-Background.jpg{% endblock %}
+{% block header_title %}<h1>{{ article.title }}</h1>{% endblock %}
+{% block header_hr %}{% endblock %}
+{% block header_subheading %}{% endblock %}
+{% block header_meta %}<span class="meta">Posted by <a href="#">{{ article.author }}</a> on {{ article.publish_date }}</span>{% endblock %}
+
+{% block main_content %}
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    {{ article.text }}
+                </div>
+            </div>
+        </div>
+    </article>
+{% endblock %}
