@@ -12,13 +12,18 @@ class PublishedManager(models.Manager):
         return self.filter(publish=True, **kwargs)
 
 
+def image_directory_path(instance, filename):
+    # File will be uploaded to MEDIA_ROOT/<article_title>/<filename>
+    return '{0}/{1}'.format(instance.title, filename)
+
+
 class Article(models.Model):
     title = models.CharField(max_length=80, verbose_name=_('Title'), unique=True)
     slug = models.SlugField(max_length=80, verbose_name=_('Slug'), unique=True)
     text = models.TextField(verbose_name=_('Text'))
     author = models.ForeignKey(User, verbose_name=_('Author'))
     creation_date = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(blank=True, verbose_name=_('Image'))
+    image = models.ImageField(blank=True, verbose_name=_('Image'), upload_to=image_directory_path)
     publish = models.BooleanField(default=False, verbose_name=_('Publish'))
     publish_date = models.DateTimeField(blank=True, null=True)
     tags = models.ManyToManyField(Tag, verbose_name=_('Tags'))

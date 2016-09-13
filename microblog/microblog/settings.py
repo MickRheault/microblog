@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'author',
     'articles',
     'tags',
+    'guest_book',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'templates', 'static')
 ]
+
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
