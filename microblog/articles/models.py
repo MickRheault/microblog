@@ -40,3 +40,10 @@ class Article(models.Model):
     @property
     def desc(self):
         return self.text[:420] + '...'
+
+    @property
+    def image_url(self):
+        if self.image and hasattr(self.image, 'url'):
+            return self.image.url
+        else:
+            return None
