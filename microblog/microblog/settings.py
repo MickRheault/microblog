@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'tags',
     'guest_book',
     'other',
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -136,3 +137,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Names reserved for apps etc.
 PROHIBITED_NAMES = ['author', 'tags', 'guest_book', 'other']
+
+# Project version
+VERSION = '0.2'
