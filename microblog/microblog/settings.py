@@ -133,3 +133,6 @@ STATICFILES_DIRS = [
 # Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Names reserved for apps etc.
+PROHIBITED_NAMES = ['author', 'tags', 'guest_book', 'other']

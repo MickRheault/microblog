@@ -5,6 +5,8 @@ from django.utils.translation import ugettext_lazy as _
 from tags.models import Tag
 from core.utils import image_directory_path
 
+from .utils import validate_title
+
 
 class PublishedManager(models.Manager):
     use_for_related_fields = True
@@ -14,7 +16,7 @@ class PublishedManager(models.Manager):
 
 
 class Article(models.Model):
-    title = models.CharField(max_length=80, verbose_name=_('Title'), unique=True)
+    title = models.CharField(max_length=80, verbose_name=_('Title'), unique=True, validators=[validate_title])
     slug = models.SlugField(max_length=80, verbose_name=_('Slug'), unique=True)
     text = models.TextField(verbose_name=_('Text'))
     author = models.ForeignKey(User, verbose_name=_('Author'))
