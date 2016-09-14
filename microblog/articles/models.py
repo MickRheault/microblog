@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
 from tags.models import Tag
+from core.utils import image_directory_path
 
 
 class PublishedManager(models.Manager):
@@ -10,11 +11,6 @@ class PublishedManager(models.Manager):
 
     def published(self, **kwargs):
         return self.filter(publish=True, **kwargs)
-
-
-def image_directory_path(instance, filename):
-    # File will be uploaded to MEDIA_ROOT/<article_title>/<filename>
-    return '{0}/{1}'.format(instance.title, filename)
 
 
 class Article(models.Model):

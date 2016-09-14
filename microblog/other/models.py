@@ -2,10 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
-
-def image_directory_path(instance, filename):
-    # File will be uploaded to MEDIA_ROOT/<article_title>/<filename>
-    return '{0}/{1}'.format(instance.title, filename)
+from core.utils import image_directory_path
 
 
 class Other(models.Model):
