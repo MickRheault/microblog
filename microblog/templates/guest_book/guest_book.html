@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block main_content %}
+    <div id="token" style="visibility: hidden; position: absolute">{{ csrf_token }}</div>
+    <div class="container">
+    <div class="row"><div class="col-xs-6 center-block" style="float: none">
+    <form id="guest-form">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.errors }}
+                {{ field }}
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-default pull-right">Wyślij</button>
+    </form>
+    </div></div>
+    <div class="row"><div class="col-xs-9 center-block" style="float: none">
+    <div id="entries-list" class="list-group" style="margin-top: 75px;">
+        {% for entry in entries %}
+            <a href='#{{ entry.id }}' class='list-group-item' style='margin: 5px 0 5px 0'>
+                <h4 class='list-group-item-heading'>{{ entry.author }}</h4>
+                <p class='list-group-item-text'>{{ entry.text }}</p>
+            </a>
+        {% endfor %}
+    </div></div>
+    </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    {% load static %}
+    <script src="{% static 'js/guest_book/main.js' %}"></script>
+{% endblock %}
