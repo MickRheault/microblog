@@ -48,7 +48,7 @@
                     <span class="sr-only">Toggle navigation</span>
                     Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="{% url 'articles:list' %}">Start Bootstrap</a>
+                <a class="navbar-brand" href="{% url 'articles:list' %}">Clean Blog</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -58,13 +58,10 @@
                         <a href="{% url 'articles:list' %}">Home</a>
                     </li>
                     <li>
-                        <a href="about.html">About</a>
+                        <a href="{% url 'other:detail' 'about' %}">About</a>
                     </li>
                     <li>
-                        <a href="post.html">Sample Post</a>
-                    </li>
-                    <li>
-                        <a href="contact.html">Contact</a>
+                        <a href="{% url 'other:detail' 'contact' %}">Contact</a>
                     </li>
                 </ul>
             </div>

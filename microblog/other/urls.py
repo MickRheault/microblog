@@ -15,9 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 
-from .views import ArticleListView, ArticleDetailView
+from .views import OtherDetailView
 
 urlpatterns = [
-    url(r'^$', ArticleListView.as_view(), name='list'),
-    url(r'(?P<slug>[\w-]+)/$', ArticleDetailView.as_view(), name='detail')
+    url(r'(?P<slug>[\w-]+)/$', OtherDetailView.as_view(), name='detail')
 ]

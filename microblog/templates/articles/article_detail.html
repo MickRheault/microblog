@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block header_type %}post{% endblock %}
-{% block header_image %}http://www.freevector.com/uploads/vector/preview/6044/FreeVector-Colorful-Shapes-Background.jpg{% endblock %}
+{% block header_image %}{{ article.image_url|default_if_none:'http://www.freevector.com/uploads/vector/preview/6044/FreeVector-Colorful-Shapes-Background.jpg' }}{% endblock %}
 {% block header_title %}<h1>{{ article.title }}</h1>{% endblock %}
 {% block header_hr %}{% endblock %}
 {% block header_subheading %}{% endblock %}
-{% block header_meta %}<span class="meta">Posted by <a href="#">{{ article.author }}</a> on {{ article.publish_date }}</span>{% endblock %}
+{% block header_meta %}<span class="meta">Posted by <a href="{% url 'author:list' article.author %}">{{ article.author }}</a> on {{ article.publish_date }}</span>{% endblock %}
 
 {% block main_content %}
     <article>

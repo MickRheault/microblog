@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 
-from .views import ArticleListView, ArticleDetailView
+from .views import entries_list, create_entry
 
 urlpatterns = [
-    url(r'^$', ArticleListView.as_view(), name='list'),
-    url(r'(?P<slug>[\w-]+)/$', ArticleDetailView.as_view(), name='detail')
+    url(r'^$', entries_list, name='index'),
+    url(r'^create-entry/$', create_entry)
 ]
