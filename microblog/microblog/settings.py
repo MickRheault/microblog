@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'articles',
     'tags',
     'guest_book',
+    'other',
 ]
 
 MIDDLEWARE = [
