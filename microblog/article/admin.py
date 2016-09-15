@@ -1,6 +1,7 @@
+from slugify import slugify
+
 from django.contrib import admin
 from django.utils import timezone
-from django.utils.text import slugify
 
 from .models import Article
 
@@ -17,7 +18,7 @@ class ArticleAdmin(admin.ModelAdmin):
             obj.publish_date = timezone.now()
 
         # Slugify title and save it as slug
-        obj.slug = slugify(form.cleaned_data['title'], allow_unicode=True)
+        obj.slug = slugify(form.cleaned_data['title'])
 
         super().save_model(request, obj, form, change)
 
