@@ -18,8 +18,11 @@
     <div id="entries-list" class="list-group" style="margin-top: 75px;">
         {% for entry in entries %}
             <a href='#{{ entry.id }}' class='list-group-item' style='margin: 5px 0 5px 0'>
-                <h4 class='list-group-item-heading'>{{ entry.author }}</h4>
-                <p class='list-group-item-text'>{{ entry.text }}</p>
+                <h4 class='list-group-item-heading'>{{ entry.author }}
+                    <small>{{ entry.creation_date }}</small>
+                </h4>
+                <p class='list-group-item-text hide-me' id="item-text">{{ entry.text }}</p>
+                <p class='list-group-item-text' id="item-desc">{{ entry.desc }}</p>
             </a>
         {% endfor %}
     </div></div>

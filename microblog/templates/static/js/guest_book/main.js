@@ -27,9 +27,8 @@ $(document).ready(function () {
         event.preventDefault();
         create_entry()
     });
-    $('.list-group-item').on('mouseenter', function () {
-        $(this).animate({height:150},200);
-    }).on('mouseleave', function () {
-        $(this).animate({height:120},200);
+    $('#entries-list').on('click', '.list-group-item', function () {
+        $(this).find('#item-desc').toggleClass('hide-me');
+        $(this).find('#item-text').toggleClass('hide-me');
     });
 });

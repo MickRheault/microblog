@@ -399,3 +399,11 @@ img::-moz-selection {
 body {
   -webkit-tap-highlight-color: #0085A1;
 }
+
+.hide-me {
+  display: none;
+}
+
+.list-group-item-text {
+    overflow:hidden
+}

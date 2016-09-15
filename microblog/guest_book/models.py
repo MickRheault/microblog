@@ -13,3 +13,12 @@ class GuessBookEntry(models.Model):
 
     def __str__(self):
         return self.text
+
+    @property
+    def desc(self):
+        text = self.text
+
+        if len(text) > 120:
+            text = text[:120] + '...'
+
+        return text
