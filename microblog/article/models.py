@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
-from tags.models import Tag
+from tag.models import Tag
 from core.utils import image_directory_path
 
 from .utils import validate_title

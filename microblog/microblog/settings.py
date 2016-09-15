@@ -26,11 +26,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #### My apps ####
     'author',
-    'articles',
-    'tags',
+    'article',
+    'tag',
     'guest_book',
     'other',
     'core',
+    'debug_toolbar'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -119,7 +120,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Names reserved for apps etc.
-PROHIBITED_NAMES = ['author', 'tags', 'guest_book', 'other']
+PROHIBITED_NAMES = ['author', 'tag', 'guest_book', 'other']
 
 # Project version
 VERSION = '0.2'

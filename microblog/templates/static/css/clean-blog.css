@@ -157,6 +157,7 @@ hr.small {
   .intro-header .site-heading,
   .intro-header .post-heading,
   .intro-header .page-heading {
+    text-shadow: 1px 0px 5px rgba(150, 150, 150, 0.87);
     padding: 150px 0;
   }
 }

@@ -17,7 +17,7 @@ class ArticleAdmin(admin.ModelAdmin):
             obj.publish_date = timezone.now()
 
         # Slugify title and save it as slug
-        obj.slug = slugify(form.cleaned_data['title'])
+        obj.slug = slugify(form.cleaned_data['title'], allow_unicode=True)
 
         super().save_model(request, obj, form, change)
 

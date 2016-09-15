@@ -16,7 +16,7 @@
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Theme CSS -->
-    <link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/clean-blog.css' %}" rel="stylesheet">
     {% block extra_css %} {% endblock %}
 
     <!-- Custom Fonts -->
@@ -48,14 +48,14 @@
                     <span class="sr-only">Toggle navigation</span>
                     Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="{% url 'articles:list' %}">Clean Blog</a>
+                <a class="navbar-brand" href="{% url 'article:list' %}">Clean Blog</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="{% url 'articles:list' %}">Home</a>
+                        <a href="{% url 'article:list' %}">Home</a>
                     </li>
                     <li>
                         <a href="{% url 'other:detail' 'about' %}">About</a>
