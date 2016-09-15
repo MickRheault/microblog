@@ -9,7 +9,7 @@ class TagAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
     def save_model(self, request, obj, form, change):
-        obj.author = request.user
+        obj.created_by = request.user
 
         super().save_model(request, obj, form, change)
 
