@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
+    url('^markdown/', include('django_markdown.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^other/', include('other.urls', namespace='other')),
     url(r'^tag/', include('tag.urls', namespace='tag')),

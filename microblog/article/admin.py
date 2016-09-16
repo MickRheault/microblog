@@ -1,6 +1,9 @@
+from django.db import models
 from django.contrib import admin
 from django.utils import timezone
 from django.utils.text import slugify
+
+from django_markdown.admin import AdminMarkdownWidget
 
 from .models import Article
 
@@ -8,6 +11,7 @@ from .models import Article
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'creation_date',)
     fields = ('title', 'text', 'image', 'publish', 'tags')
+    formfield_overrides = {models.TextField: {'widget': AdminMarkdownWidget}}
 
     def save_model(self, request, obj, form, change):
         obj.author = request.user
