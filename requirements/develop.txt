@@ -1,0 +1,9 @@
+-r base.txt
+
+# Python
+
+# Django
+django-debug-toolbar==1.5
+
+# Django dependencies 
+
