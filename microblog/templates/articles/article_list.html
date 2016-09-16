@@ -10,13 +10,17 @@
                         <h2 class="post-title">{{ article.title }}</h2>
                         <h3 class="post-subtitle">{{ article.desc }}</h3>
                     </a>
-                    <p class="post-meta">Posted by <a href="{% url 'article:author-list' article.author %}">{{ article.author }}</a> on
-                        {{ article.publish_date }}</p>
-                    <p>Tags:
-                    {% for tag in article.tags.all %}
-                        <a href="{% url 'tag:list' tag.slug %}">{{ tag }}</a> ,
-                    {% endfor %}
+                    <p class="post-meta pull-left">Posted by <a href="{% url 'article:author-list' article.author %}">{{ article.author }}</a> on
+                        {{ article.publish_date }}
                     </p>
+
+                     <div class="tag-group pull-right">
+                        Tags:
+                        {% for tag in article.tags.all %}
+                            <a href="{% url 'tag:list' tag.slug %}">{{ tag }}</a>{% if forloop.last %}{% else %},{% endif %}
+                        {% endfor %}
+                     </div>
+                    <div class="clearfix"></div>
                 </div>
                 <hr>
                 {% endfor %}
