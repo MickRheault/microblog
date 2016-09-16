@@ -14,7 +14,7 @@
                         {{ article.publish_date }}
                     </p>
 
-                     <div class="tag-group pull-right">
+                     <div class="post-meta pull-right">
                         Tags:
                         {% for tag in article.tags.all %}
                             <a href="{% url 'tag:list' tag.slug %}">{{ tag }}</a>{% if forloop.last %}{% else %},{% endif %}
