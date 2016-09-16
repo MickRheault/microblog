@@ -10,7 +10,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'pkr48ibeu0(=wh2g2nbkeugasq+x)e8lz4+b9u)ymh(6i(#2o3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -30,7 +30,6 @@ INSTALLED_APPS = [
     'guest_book',
     'other',
     'core',
-    'debug_toolbar'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -123,3 +122,12 @@ PROHIBITED_NAMES = ['author', 'tag', 'guest_book', 'other']
 
 # Project version
 VERSION = '0.2'
+
+# This must be always at the of file
+DEV_APPS = None
+
+try:
+    from .local_settings import *
+    INSTALLED_APPS += DEV_APPS
+except ImportError:
+    pass
