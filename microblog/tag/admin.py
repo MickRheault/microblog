@@ -1,6 +1,5 @@
-from slugify import slugify
-
 from django.contrib import admin
+from django.utils.text import slugify
 
 from .models import Tag
 
@@ -13,7 +12,7 @@ class TagAdmin(admin.ModelAdmin):
         obj.created_by = request.user
 
         # Slugify title and save it as slug
-        obj.slug = slugify(form.cleaned_data['title'])
+        obj.slug = slugify(form.cleaned_data['title'], allow_unicode=True)
 
         super().save_model(request, obj, form, change)
 
