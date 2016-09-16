@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib import admin
 from django.utils import timezone
 from django.utils.text import slugify
+from django.forms.widgets import Textarea
 
 from django_markdown.admin import AdminMarkdownWidget
 
@@ -10,8 +11,7 @@ from .models import Article
 
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'creation_date',)
-    fields = ('title', 'text', 'image', 'publish', 'tags')
-    formfield_overrides = {models.TextField: {'widget': AdminMarkdownWidget}}
+    fields = ('title', 'desc', 'text', 'image', 'publish', 'tags')
 
     def save_model(self, request, obj, form, change):
         obj.author = request.user
@@ -24,5 +24,14 @@ class ArticleAdmin(admin.ModelAdmin):
         obj.slug = slugify(form.cleaned_data['title'], allow_unicode=True)
 
         super().save_model(request, obj, form, change)
+
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        # Setup widget to specified field
+        if db_field.name == 'desc':
+            kwargs['widget'] = Textarea
+        if db_field.name == 'text':
+            kwargs['widget'] = AdminMarkdownWidget
+
+        return super(ArticleAdmin, self).formfield_for_dbfield(db_field, **kwargs)
 
 admin.site.register(Article, ArticleAdmin)
