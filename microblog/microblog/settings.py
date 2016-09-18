@@ -26,16 +26,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Third-party apps
     'django_markdown',
+    'captcha',
     #### My apps ####
     'article',
     'tag',
     'guest_book',
     'other',
     'core',
-    'debug_toolbar',
-    # 3-party app
-    'captcha',
-    'debug_toolbar',
 ]
 
 MIDDLEWARE_CLASSES = [
