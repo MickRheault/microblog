@@ -3,10 +3,15 @@
  * Copyright 2013-2016 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
+
+@import 'https://fonts.googleapis.com/css?family=Fira+Sans';
+
 body {
-  font-family: 'Lora', 'Times New Roman', serif;
-  font-size: 20px;
+  font-family: 'Myriad Pro', 'Times New Roman', serif;
+  font-size: 18px;
+  line-height: 120%;
   color: #333333;
+  font-weight: 100;
 }
 p {
   line-height: 1.5;
@@ -216,6 +221,13 @@ hr.small {
     font-size: 30px;
   }
 }
+
+.post-preview h3 {
+  font-family: 'Myriad Pro', 'Times New Roman', serif;
+  font-size: 17px;
+  font-weight: normal;
+}
+
 .post-preview > a {
   color: #333333;
 }
@@ -236,8 +248,7 @@ hr.small {
 }
 .post-preview > .post-meta {
   color: #777777;
-  font-size: 18px;
-  font-style: italic;
+  font-size: 16px;
   margin-top: 0;
 }
 .post-preview > .post-meta > a {

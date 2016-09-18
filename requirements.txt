@@ -1,4 +1,0 @@
-Django==1.9.9
-
-python-slugify==1.2.1
-Pillow==3.3.1
