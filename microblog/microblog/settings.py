@@ -30,7 +30,9 @@ INSTALLED_APPS = [
     'guest_book',
     'other',
     'core',
-    'debug_toolbar'
+    'debug_toolbar',
+    # 3-party app
+    'captcha',
 ]
 
 MIDDLEWARE_CLASSES = [

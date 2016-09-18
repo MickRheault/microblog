@@ -4,14 +4,23 @@ function create_entry() {
         type : "POST", // http method
         data : { author : $('#id_author').val(),
                  text : $('#id_text').val(),
-                 csrfmiddlewaretoken : $('#token').text()}, // data sent with the post request
+                 csrfmiddlewaretoken : $('#token').text(),
+                 captcha_0 : $('#id_captcha_0').val(),
+                 captcha_1 : $('#id_captcha_1').val()
+                }, // data sent with the post request
 
         // handle a successful response
         success : function(json) {
             $('#id_author').val(''); // remove the value from the input
             $('#id_text').val('');
             console.log(json);
-            $("#entries-list").prepend(json.html);
+            $('#id_captcha_0').val(json.cptch_key);
+            $('#id_captcha_1').val('');
+            $('img.captcha').attr('src',json.cptch_image);
+
+            if (json.html.length > 2) {
+                $("#entries-list").prepend(json.html);
+            }
         },
 
         // handle a non-successful response
