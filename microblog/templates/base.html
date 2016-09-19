@@ -69,6 +69,11 @@
                     <li>
                         <a href="{% url 'article:list' %}">Home</a>
                     </li>
+                    {% if searchform %}
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#searchmodal">Search</a>
+                    </li>
+                    {% endif %}
                     <li>
                         <a href="{% url 'other:detail' 'about' %}">About</a>
                     </li>
@@ -153,6 +158,28 @@
     <script src="{% static 'js/clean-blog.min.js' %}"></script>
     {% endblock js %}
     {% block extra_js %} {% endblock %}
+
+    {% if searchform %}
+<div class="modal fade searchmodal" tabindex="-1" role="dialog" aria-labelledby="searchmodal" aria-hidden="true" id="searchmodal">
+<div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Search Form</h4>
+                </div>
+                <div class="modal-body">
+                     <form id="requestacallform" method="GET" name="requestacallform">
+
+                            {{ searchform }}
+ <button type="submit" class="btn btn-blue">Submit</button>
+                            </form>
+                  </div>
+        </div>
+        </div>
+      </div>
+    </div>
+{% endif %}
 </body>
 
 </html>

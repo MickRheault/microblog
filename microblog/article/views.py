@@ -3,18 +3,32 @@ from django.views.generic import ListView, DetailView
 from django.http import Http404
 
 from .models import Article
+from .forms import SearchForm
 
 
 class ArticleMixin(object):
-
-    @staticmethod
-    def get_queryset():
+    def get_queryset(self):
         queryset = Article.objects.published().select_related('author')
         queryset = queryset.prefetch_related('tags')
         return queryset
 
 
-class ArticleListView(ArticleMixin, ListView):
+class ArticleSearchMixin(ArticleMixin):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['searchform'] = SearchForm()
+
+        return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        if self.request.GET.get('search'):
+            queryset = queryset.filter(title__icontains=self.request.GET.get('search'))
+        return queryset
+
+
+class ArticleListView(ArticleSearchMixin, ListView):
     template_name = 'articles/article_list.html'
     context_object_name = 'articles'
     paginate_by = 1
@@ -25,7 +39,7 @@ class ArticleDetailView(ArticleMixin, DetailView):
     context_object_name = 'article'
 
 
-class ArticleAuthorListView(ListView):
+class ArticleAuthorListView(ArticleSearchMixin, ListView):
     template_name = 'articles/article_list.html'
     context_object_name = 'articles'
     paginate_by = 1
@@ -37,9 +51,7 @@ class ArticleAuthorListView(ListView):
         if not slug:
             return Http404
 
-        queryset = Article.objects.published()
+        queryset = super().get_queryset()
         queryset = queryset.filter(author__username=slug)
-        queryset = queryset.select_related('author')
-        queryset = queryset.prefetch_related('tags')
 
         return queryset

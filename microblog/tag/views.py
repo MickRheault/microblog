@@ -2,10 +2,10 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from django.http import Http404
 
-from article.models import Article
+from article.views import ArticleSearchMixin
 
 
-class TagsListView(ListView):
+class TagsListView(ArticleSearchMixin, ListView):
     template_name = 'articles/article_list.html'
     context_object_name = 'articles'
 
@@ -16,9 +16,7 @@ class TagsListView(ListView):
         if not slug:
             return Http404
 
-        queryset = Article.objects.published()
+        queryset = super().get_queryset()
         queryset = queryset.filter(tags__slug__exact=slug)
-        queryset = queryset.select_related('author')
-        queryset = queryset.prefetch_related('tags')
 
         return queryset
