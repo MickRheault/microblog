@@ -49,7 +49,7 @@ class ArticleAuthorListView(ArticleSearchMixin, ListView):
 
         # in case of None return 404
         if not slug:
-            return Http404
+            raise Http404
 
         queryset = super().get_queryset()
         queryset = queryset.filter(author__username=slug)
