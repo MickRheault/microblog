@@ -32,6 +32,7 @@ class Article(models.Model):
     class Meta:
         verbose_name = _('Article')
         verbose_name_plural = _('Articles')
+        ordering = ['-pk']
 
     def __str__(self):
         return self.title
