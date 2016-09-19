@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.template.loader import render_to_string
 
+from captcha.models import CaptchaStore
+from captcha.helpers import captcha_image_url
+
 from .models import GuessBookEntry
 from .forms import EntryForm
 
@@ -17,16 +20,27 @@ def create_entry(request):
         response_data = {}
 
         entry = EntryForm(request.POST)
-        entry.is_valid()
-        entry = entry.save()
-        html = (render_to_string('guest_book/snippets/entry_item.html', {
-            'id': entry.id,
-            'author': entry.author,
-            'text': entry.text
-        }))
-        response_data['result'] = 'Create post successful!'
-        response_data['html'] = html
+        if entry.is_valid():
+            entry = entry.save()
+            html = (render_to_string('guest_book/snippets/entry_item.html', {
+                'id': entry.id,
+                'author': entry.author,
+                'text': entry.text
+            }))
+            response_data['result'] = True
+            response_data['html'] = html
 
-        return JsonResponse(response_data)
+            # Generate new captcha and pass it to json
+            response_data['cptch_key'] = CaptchaStore.generate_key()
+            response_data['cptch_image'] = captcha_image_url(response_data['cptch_key'])
+
+            return JsonResponse(response_data)
+        else:
+            response_data['result'] = False
+            response_data['cptch_key'] = CaptchaStore.generate_key()
+            response_data['cptch_image'] = captcha_image_url(response_data['cptch_key'])
+
+            return JsonResponse(response_data)
+
     else:
         return JsonResponse({"nothing to see": "this isn't happening"})

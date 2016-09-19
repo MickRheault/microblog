@@ -1,9 +1,12 @@
 from django import forms
 
+from captcha.fields import CaptchaField, BaseCaptchaTextInput
+
 from .models import GuessBookEntry
 
 
 class EntryForm(forms.ModelForm):
+    captcha = CaptchaField()
 
     class Meta:
         fields = ('author', 'text')
@@ -14,5 +17,8 @@ class EntryForm(forms.ModelForm):
             ),
             'text' : forms.Textarea(
                 attrs={'required': True, 'placeholder': 'Say something...', 'class': 'form-control', 'rows': '3'}
+            ),
+            'captcha' : BaseCaptchaTextInput(
+                attrs={'required': True, 'class': 'form-control'}
             )
         }

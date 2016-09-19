@@ -5,14 +5,14 @@
 {% block header_title %}<h1>{{ article.title }}</h1>{% endblock %}
 {% block header_hr %}{% endblock %}
 {% block header_subheading %}{% endblock %}
-{% block header_meta %}<span class="meta">Posted by <a href="{% url 'author:list' article.author %}">{{ article.author }}</a> on {{ article.publish_date }}</span>{% endblock %}
-
+{% block header_meta %}<span class="meta">Posted by <a href="{% url 'article:author-list' article.author %}">{{ article.author }}</a> on {{ article.publish_date }}</span>{% endblock %}
+{% load django_markdown %}
 {% block main_content %}
     <article>
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    {{ article.text }}
+                    {{ article.text|markdown }}
                 </div>
             </div>
         </div>
