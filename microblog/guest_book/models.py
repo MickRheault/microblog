@@ -10,6 +10,7 @@ class GuessBookEntry(models.Model):
     class Meta:
         verbose_name = _('Entry')
         verbose_name_plural = _('Entries')
+        ordering = ['-pk']
 
     def __str__(self):
         return self.text
