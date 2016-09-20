@@ -41,7 +41,9 @@ class CreateEntry(CreateView):
         html = (render_to_string('guest_book/snippets/entry_item.html', {
             'id': self.object.id,
             'author': self.object.author,
-            'text': self.object.text
+            'text': self.object.text,
+            'creation_date': self.object.creation_date,
+            'desc': self.object.desc,
         }))
 
         context = self.get_context_data()

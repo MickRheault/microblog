@@ -32,5 +32,12 @@
 
 {% block extra_js %}
     {% load static %}
+
+    <script>
+    var settings = {
+        url: '{% url 'guest-book:create' %}'
+    }
+    </script>
+
     <script src="{% static 'js/guest_book/main.js' %}"></script>
 {% endblock %}

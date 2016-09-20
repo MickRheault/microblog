@@ -1,4 +1,7 @@
 <a href='#{{ id }}' class='list-group-item' style='margin: 5px 0 5px 0'>
-    <h4 class='list-group-item-heading'>{{ author }}</h4>
-    <p class='list-group-item-text'>{{text }}</p>
+    <h4 class='list-group-item-heading'>{{ author }}
+        <small>{{ creation_date }}</small>
+    </h4>
+    <p class='list-group-item-text hide-me' id="item-text">{{ text }}</p>
+    <p class='list-group-item-text' id="item-desc">{{ desc }}</p>
 </a>
