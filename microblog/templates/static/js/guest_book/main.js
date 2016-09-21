@@ -1,6 +1,6 @@
 function create_entry() {
     $.ajax({
-        url : "create-entry/", // the endpoint
+        url : settings.url, // the endpoint
         type : "POST", // http method
         data : { author : $('#id_author').val(),
                  text : $('#id_text').val(),
@@ -11,14 +11,16 @@ function create_entry() {
 
         // handle a successful response
         success : function(json) {
-            $('#id_author').val(''); // remove the value from the input
-            $('#id_text').val('');
             console.log(json);
             $('#id_captcha_0').val(json.cptch_key);
             $('#id_captcha_1').val('');
             $('img.captcha').attr('src',json.cptch_image);
 
-            if (json.html.length > 2) {
+            if (json.result == false) {
+                alert('Wrong Captcha');
+            } else {
+                $('#id_author').val(''); // remove the value from the input
+                $('#id_text').val('');
                 $("#entries-list").prepend(json.html);
             }
         },

@@ -1,8 +1,8 @@
 from django.conf.urls import url
 
-from .views import entries_list, create_entry
+from .views import EntriesList, CreateEntry
 
 urlpatterns = [
-    url(r'^$', entries_list, name='index'),
-    url(r'^create-entry/$', create_entry)
+    url(r'^$', EntriesList.as_view(), name='index'),
+    url(r'^create-entry/$', CreateEntry.as_view(), name='create')
 ]

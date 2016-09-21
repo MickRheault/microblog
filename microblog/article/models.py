@@ -19,7 +19,7 @@ class Article(models.Model):
     title = models.CharField(max_length=80, verbose_name=_('Title'), unique=True, validators=[validate_title])
     slug = models.SlugField(max_length=80, verbose_name=_('Slug'), unique=True)
     text = models.TextField(verbose_name=_('Text'))
-    desc = models.CharField(verbose_name=_('Description'), default='', max_length=180)
+    desc = models.CharField(verbose_name=_('Description'), default='', max_length=400)
     author = models.ForeignKey(User, verbose_name=_('Author'))
     creation_date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(blank=True, verbose_name=_('Image'), upload_to=image_directory_path)

@@ -78,6 +78,9 @@
                         <a href="{% url 'other:detail' 'about' %}">About</a>
                     </li>
                     <li>
+                        <a href="{% url 'guest-book:index' %}">Guest Book</a>
+                    </li>
+                    <li>
                         <a href="{% url 'other:detail' 'contact' %}">Contact</a>
                     </li>
                 </ul>
@@ -96,7 +99,7 @@
                     <div class="{% block header_type %}site{% endblock %}-heading">
                         {% block header_title %}<h1>Clean Blog</h1>{% endblock %}
                         {% block header_hr %}<hr class="small"> {% endblock %}
-                        {% block header_subheading %}<span class="subheading">A Clean Blog Theme by Start Bootstrap</span>{% endblock %}
+                        {% block header_subheading %}<span class="subheading">Let's Change the World</span>{% endblock %}
                         {% block header_meta %} {% endblock %}
                     </div>
                 </div>
@@ -159,26 +162,27 @@
     {% endblock js %}
     {% block extra_js %} {% endblock %}
 
-    {% if searchform %}
+{% if searchform %}
+<script src="{% static 'js/navbar-fix.js' %}"></script>
 <div class="modal fade searchmodal" tabindex="-1" role="dialog" aria-labelledby="searchmodal" aria-hidden="true" id="searchmodal">
-<div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-sm">
         <div class="modal-content">
-          <div class="modal-content">
-                <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Search Form</h4>
-                </div>
-                <div class="modal-body">
-                     <form id="requestacallform" method="GET" name="requestacallform">
-
-                            {{ searchform }}
- <button type="submit" class="btn btn-blue">Submit</button>
-                            </form>
-                  </div>
+            <div class="modal-header" hidden="true"></div>
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin: 6px 0 0 15px;">&times;</button>
+                     <form id="requestacallform" method="GET">
+                         <div class="input-group">
+                            {{ searchform.search }}
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" style="padding: 6px 5px 6px 5px">Go!</button>
+                            </span>
+                         </div>
+                     </form>
+            </div>
+            <div class="modal-footer" hidden="true"></div>
         </div>
-        </div>
-      </div>
     </div>
+</div>
 {% endif %}
 </body>
 
