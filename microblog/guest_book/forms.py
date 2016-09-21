@@ -18,7 +18,4 @@ class EntryForm(forms.ModelForm):
             'text' : forms.Textarea(
                 attrs={'required': True, 'placeholder': 'Say something...', 'class': 'form-control', 'rows': '3'}
             ),
-            'captcha' : BaseCaptchaTextInput(
-                attrs={'required': True, 'class': 'form-control'}
-            )
         }
