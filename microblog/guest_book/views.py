@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.views.generic import TemplateView, CreateView
 
