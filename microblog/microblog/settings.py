@@ -27,12 +27,13 @@ INSTALLED_APPS = [
     # Third-party apps
     'django_markdown',
     'captcha',
-    #### My apps ####
+    # My apps
     'article',
     'tag',
     'guest_book',
     'other',
     'core',
+    'file',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -121,7 +122,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Names reserved for apps etc.
-PROHIBITED_NAMES = ['author', 'tag', 'guest_book', 'other']
+PROHIBITED_NAMES = ['author', 'tag', 'guest_book', 'other', 'file']
 
 # Project version
 VERSION = '0.3'
