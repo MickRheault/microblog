@@ -151,7 +151,8 @@ hr.small {
   background-size: cover;
   -o-background-size: cover;
   margin-bottom: 50px;
-  filter: grayscale(60%);
+  filter: grayscale(70%);
+  -webkit-filter: grayscale(70%);
 }
 .intro-header .site-heading,
 .intro-header .post-heading,
@@ -181,7 +182,8 @@ hr.small {
   line-height: 1.1;
   display: block;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 300;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  font-weight: 500;
   margin: 10px 0 0;
 }
 @media only screen and (min-width: 768px) {

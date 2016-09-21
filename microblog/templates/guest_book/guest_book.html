@@ -1,4 +1,10 @@
 {% extends 'base.html' %}
+
+{% block header_type %}post{% endblock %}
+{% block header_image %}http://pre09.deviantart.net/362c/th/pre/f/2016/011/2/5/minimalist_art_style_landscape_by_dr_sandvich-d9nlxfo.png{% endblock %}
+{% block header_title %}<h1>Guest Book</h1>{% endblock %}
+{% block header_hr %}{% endblock %}
+{% block header_subheading %}Just another guest book written in django and jquery...{% endblock %}
 {% block main_content %}
     <div id="token" style="visibility: hidden; position: absolute">{{ csrf_token }}</div>
     <div class="container">
