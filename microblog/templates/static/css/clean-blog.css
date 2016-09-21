@@ -151,8 +151,8 @@ hr.small {
   background-size: cover;
   -o-background-size: cover;
   margin-bottom: 50px;
-  filter: grayscale(70%);
-  -webkit-filter: grayscale(70%);
+  filter: grayscale(50%);
+  -webkit-filter: grayscale(50%);
 }
 .intro-header .site-heading,
 .intro-header .post-heading,
