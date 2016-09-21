@@ -151,6 +151,7 @@ hr.small {
   background-size: cover;
   -o-background-size: cover;
   margin-bottom: 50px;
+  filter: grayscale(60%);
 }
 .intro-header .site-heading,
 .intro-header .post-heading,
@@ -162,7 +163,6 @@ hr.small {
   .intro-header .site-heading,
   .intro-header .post-heading,
   .intro-header .page-heading {
-    text-shadow: 1px 0px 5px rgba(150, 150, 150, 0.87);
     padding: 150px 0;
   }
 }
@@ -454,4 +454,11 @@ body {
 .search-form .form-group.hover {
   width: 100%;
   border-radius: 4px 25px 25px 4px;
+}
+
+article img {
+  display: block;
+  margin: 0 auto;
+  max-width: 85%;
+  height: auto;
 }
