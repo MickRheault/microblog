@@ -30,7 +30,7 @@ class ArticleSearchMixin(ArticleMixin):
 class ArticleListView(ArticleSearchMixin, ListView):
     template_name = 'articles/article_list.html'
     context_object_name = 'articles'
-    paginate_by = 1
+    paginate_by = 5
 
 
 class ArticleDetailView(ArticleMixin, DetailView):
@@ -41,7 +41,7 @@ class ArticleDetailView(ArticleMixin, DetailView):
 class ArticleAuthorListView(ArticleSearchMixin, ListView):
     template_name = 'articles/article_list.html'
     context_object_name = 'articles'
-    paginate_by = 1
+    paginate_by = 5
 
     def get_queryset(self):
         slug = self.kwargs.get('slug')
