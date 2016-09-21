@@ -163,9 +163,9 @@
 <div class="modal fade searchmodal" tabindex="-1" role="dialog" aria-labelledby="searchmodal" aria-hidden="true" id="searchmodal">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-top: 7px">&times;</button>
-                <div class="col-xs-11">
+            <div class="modal-header" hidden="true"></div>
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin: 6px 0 0 15px;">&times;</button>
                      <form id="requestacallform" method="GET">
                          <div class="input-group">
                             {{ searchform.search }}
@@ -174,8 +174,8 @@
                             </span>
                          </div>
                      </form>
-                </div>
             </div>
+            <div class="modal-footer" hidden="true"></div>
         </div>
     </div>
 </div>
