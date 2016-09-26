@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block header_image %}https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-162720.jpg{% endblock %}
-
 
 {% block main_content %}
     <div class="container">
@@ -13,12 +13,12 @@
                         <h2 class="post-title">{{ article.title }}</h2>
                         <h3 class="post-subtitle">{{ article.desc }}</h3>
                     </a>
-                    <p class="post-meta pull-left">Posted by <a href="{% url 'article:author-list' article.author %}">{{ article.author }}</a> on
+                    <p class="post-meta pull-left">{% trans 'Posted by' %} <a href="{% url 'article:author-list' article.author %}">{{ article.author }}</a> {% trans 'on' %}
                         {{ article.publish_date }}
                     </p>
 
                      <div class="post-meta pull-right">
-                        Tags:
+                        {% trans 'Tags:' %}
                         {% for tag in article.tags.all %}
                             <a href="{% url 'tag:list' tag.slug %}">{{ tag }}</a>{% if forloop.last %}{% else %},{% endif %}
                         {% endfor %}
@@ -31,11 +31,11 @@
                 <ul class="pager">
                     {% if page_obj.has_next %}
                     <li class="next">
-                        <a href="?page={{ page_obj.next_page_number }}">Older Posts &rarr;</a>
+                        <a href="?page={{ page_obj.next_page_number }}">{% trans 'Older Posts' %} &rarr;</a>
                     </li>
                     {% elif page_obj.has_previous %}
                         <li class="previous">
-                        <a href="?page={{ page_obj.previous_page_number }}">&larr; Newer Posts</a>
+                        <a href="?page={{ page_obj.previous_page_number }}">&larr; {% trans 'Newer Posts' %}</a>
                     </li>
                     {% endif %}
                 </ul>

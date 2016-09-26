@@ -3,6 +3,7 @@
 
 <head>
     {% load static core %}
+    {% load i18n %}
 
     <style type="text/css">
         @font-face {
@@ -67,21 +68,21 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="{% url 'article:list' %}">Home</a>
+                        <a href="{% url 'article:list' %}">{% trans 'Home' %}</a>
                     </li>
                     {% if searchform %}
                     <li>
-                        <a href="#" data-toggle="modal" data-target="#searchmodal">Search</a>
+                        <a href="#" data-toggle="modal" data-target="#searchmodal">{% trans 'Search' %}</a>
                     </li>
                     {% endif %}
                     <li>
-                        <a href="{% url 'other:detail' 'about' %}">About</a>
+                        <a href="{% url 'other:detail' 'about' %}">{% trans 'About' %}</a>
                     </li>
                     <li>
-                        <a href="{% url 'guest-book:index' %}">Guest Book</a>
+                        <a href="{% url 'guest-book:index' %}">{% trans 'Guest Book' %}</a>
                     </li>
                     <li>
-                        <a href="{% url 'other:detail' 'contact' %}">Contact</a>
+                        <a href="{% url 'other:detail' 'contact' %}">{% trans 'Contact' %}</a>
                     </li>
                 </ul>
             </div>
@@ -143,7 +144,7 @@
                             </a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted">Copyright &copy; Your Website {% version %}v 2016</p>
+                    <p class="copyright text-muted">Copyright &copy; 2016 Clean Blog {% version %}v </p>
                 </div>
             </div>
         </div>
