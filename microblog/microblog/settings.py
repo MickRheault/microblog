@@ -145,3 +145,8 @@ try:
     INSTALLED_APPS += DEV_APPS
 except ImportError:
     pass
+
+try:
+    from .production_settings import *
+except ImportError:
+    pass
