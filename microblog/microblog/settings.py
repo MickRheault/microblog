@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     # Third-party apps
     'django_markdown',
     'captcha',
+    'django_cleanup',
     # My apps
     'article',
     'tag',
