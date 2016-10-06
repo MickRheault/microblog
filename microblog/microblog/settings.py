@@ -12,7 +12,7 @@ SECRET_KEY = 'pkr48ibeu0(=wh2g2nbkeugasq+x)e8lz4+b9u)ymh(6i(#2o3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     # Third-party apps
     'django_markdown',
     'captcha',
+    'django_cleanup',
     # My apps
     'article',
     'tag',
@@ -135,7 +136,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 PROHIBITED_NAMES = ['author', 'tag', 'guest_book', 'other', 'file']
 
 # Project version
-VERSION = '0.4'
+VERSION = '0.5.1'
 
 # This must be always at the of file
 DEV_APPS = None
