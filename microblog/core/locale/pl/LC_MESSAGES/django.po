@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-06 17:22+0000\n"
+"POT-Creation-Date: 2016-10-06 10:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,13 +19,110 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
+#: article/forms.py:7 templates/base.html:75
+msgid "Search"
+msgstr "Wyszukaj"
+
+#: article/models.py:19 file/models.py:18 other/models.py:9 tag/models.py:7
+msgid "Title"
+msgstr "Tytuł"
+
+#: article/models.py:20 other/models.py:10 tag/models.py:8
+msgid "Slug"
+msgstr "Slug"
+
+#: article/models.py:21 guest_book/models.py:7 other/models.py:11
+msgid "Text"
+msgstr ""
+
+#: article/models.py:22
+msgid "Description"
+msgstr "Opis"
+
+#: article/models.py:23 guest_book/models.py:6
+msgid "Author"
+msgstr "Autor"
+
+#: article/models.py:25 other/models.py:12
+msgid "Image"
+msgstr "Obraz"
+
+#: article/models.py:26
+msgid "Publish"
+msgstr "Opublikuj"
+
+#: article/models.py:28 tag/models.py:14
+msgid "Tags"
+msgstr "Tagi"
+
+#: article/models.py:33
+msgid "Article"
+msgstr "Artykuł"
+
+#: article/models.py:34
+msgid "Articles"
+msgstr "Artykuły"
+
+#: article/utils.py:10
+#, python-format
+msgid "%s name is prohibited"
+msgstr "nazwa %s jest zakazana"
+
+#: article/views.py:63
+msgid "Latest Articles"
+msgstr "Najnowsze Artykuły"
+
+#: file/models.py:14
+msgid "Unsupported file extension."
+msgstr "Niewspierane rozszerzenie."
+
+#: file/models.py:21
+msgid "Upload file"
+msgstr "Wyślij plik"
+
+#: file/models.py:24
+msgid "File"
+msgstr "Plik"
+
+#: file/models.py:25
+msgid "Files"
+msgstr "Pliki"
+
+#: guest_book/models.py:11
+msgid "Entry"
+msgstr "Wpis"
+
+#: guest_book/models.py:12
+msgid "Entries"
+msgstr "Wpisy"
+
+#: other/models.py:13
+msgid "Creation Date"
+msgstr "Data utworzenia"
+
+#: other/models.py:17
+msgid "Other"
+msgstr "Inny"
+
+#: other/models.py:18
+msgid "Others"
+msgstr "Inne"
+
+#: tag/models.py:9
+msgid "Created by"
+msgstr "Utworzone przez"
+
+#: tag/models.py:13
+msgid "Tag"
+msgstr "Tag"
+
 #: templates/articles/article_detail.html:9
-#: templates/articles/article_list.html:16 templates/other/other_detail.html:8
+#: templates/articles/article_list.html:16
 msgid "Posted by"
 msgstr "Wrzucone przez"
 
 #: templates/articles/article_detail.html:9
-#: templates/articles/article_list.html:16 templates/other/other_detail.html:8
+#: templates/articles/article_list.html:16
 msgid "on"
 msgstr "dnia"
 
@@ -44,10 +141,6 @@ msgstr "Nowsze"
 #: templates/base.html:71
 msgid "Home"
 msgstr "Strona Główna"
-
-#: templates/base.html:75
-msgid "Search"
-msgstr "Wyszukaj"
 
 #: templates/base.html:79
 msgid "About"
@@ -72,69 +165,3 @@ msgstr "Kolejna księga gości napisana w django i jquery"
 #: templates/guest_book/guest_book.html:21
 msgid "Submit"
 msgstr "Wyślij"
-
-#~ msgid "Title"
-#~ msgstr "Tytuł"
-
-#~ msgid "Slug"
-#~ msgstr "Slug"
-
-#~ msgid "Description"
-#~ msgstr "Opis"
-
-#~ msgid "Author"
-#~ msgstr "Autor"
-
-#~ msgid "Image"
-#~ msgstr "Obraz"
-
-#~ msgid "Publish"
-#~ msgstr "Opublikuj"
-
-#~ msgid "Tags"
-#~ msgstr "Tagi"
-
-#~ msgid "Article"
-#~ msgstr "Artykuł"
-
-#~ msgid "Articles"
-#~ msgstr "Artykuły"
-
-#~ msgid "%s name is prohibited"
-#~ msgstr "nazwa %s jest zakazana"
-
-#~ msgid "Latest Articles"
-#~ msgstr "Najnowsze Artykuły"
-
-#~ msgid "Unsupported file extension."
-#~ msgstr "Niewspierane rozszerzenie."
-
-#~ msgid "Upload file"
-#~ msgstr "Wyślij plik"
-
-#~ msgid "File"
-#~ msgstr "Plik"
-
-#~ msgid "Files"
-#~ msgstr "Pliki"
-
-#~ msgid "Entry"
-#~ msgstr "Wpis"
-
-#~ msgid "Entries"
-#~ msgstr "Wpisy"
-
-#~ msgid "Creation Date"
-#~ msgstr "Data utworzenia"
-
-#~ msgid "Other"
-#~ msgstr "Inny"
-
-#~ msgid "Others"
-#~ msgstr "Inne"
-
-#~ msgid "Created by"
-#~ msgstr "Utworzone przez"
-
-#~ msgid "Tag"
-#~ msgstr "Tag"
