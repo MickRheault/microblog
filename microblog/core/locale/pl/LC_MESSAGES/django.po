@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-06 10:28+0000\n"
+"POT-Creation-Date: 2016-10-06 17:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -117,12 +117,12 @@ msgid "Tag"
 msgstr "Tag"
 
 #: templates/articles/article_detail.html:9
-#: templates/articles/article_list.html:16
+#: templates/articles/article_list.html:16 templates/other/other_detail.html:8
 msgid "Posted by"
 msgstr "Wrzucone przez"
 
 #: templates/articles/article_detail.html:9
-#: templates/articles/article_list.html:16
+#: templates/articles/article_list.html:16 templates/other/other_detail.html:8
 msgid "on"
 msgstr "dnia"
 
