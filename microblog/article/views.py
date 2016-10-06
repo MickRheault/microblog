@@ -1,5 +1,8 @@
+from django.contrib.syndication.views import Feed
 from django.views.generic import ListView, DetailView
 from django.http import Http404
+from django.core.urlresolvers import reverse_lazy
+from django.utils.translation import ugettext as _
 
 from .models import Article
 from .forms import SearchForm
@@ -54,3 +57,21 @@ class ArticleAuthorListView(ArticleSearchMixin, ListView):
         queryset = queryset.filter(author__username=slug)
 
         return queryset
+
+
+class LatestArticlesFeed(Feed):
+    title = _("Latest Articles")
+    link = "/"
+
+    def items(self):
+        return Article.objects.published()[:5]
+
+    def item_title(self, item):
+        return item.title
+
+    def item_description(self, item):
+        return item.desc
+
+    # item_link is only needed if NewsItem has no get_absolute_url method.
+    def item_link(self, item):
+        return reverse_lazy('article:detail', args=[item.slug])
