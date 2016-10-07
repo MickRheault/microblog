@@ -25,7 +25,9 @@
                      </div>
                     <div class="clearfix"></div>
                 </div>
-                <hr>
+                {% if not forloop.last %}
+                    <hr>
+                {% endif %}
                 {% endfor %}
                 <!-- Pager -->
                 <ul class="pager">
