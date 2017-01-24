@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django_markdown',
     'captcha',
     'django_cleanup',
+    'rest_framework',
     # My apps
     'article',
     'tag',
