@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'other',
     'core',
     'file',
+    'api'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -134,7 +135,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Names reserved for apps etc.
-PROHIBITED_NAMES = ['author', 'tag', 'guest_book', 'other', 'file']
+PROHIBITED_NAMES = ['author', 'tag', 'guest_book', 'other', 'file', 'api']
 
 # Project version
 VERSION = '0.5.4'
