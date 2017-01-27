@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'captcha',
     'django_cleanup',
     'rest_framework',
+    'rest_framework.authtoken',
     # My apps
     'article',
     'tag',
@@ -142,6 +143,13 @@ VERSION = '0.5.4'
 
 # This must be always at the of file
 DEV_APPS = None
+
+# Rest config
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
 
 try:
     from .local_settings import *

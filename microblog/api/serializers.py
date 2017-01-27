@@ -11,6 +11,12 @@ class ArticleSerializer(serializers.ModelSerializer):
         fields = ('title', 'desc', 'author', 'creation_date', 'tags')
 
 
+class ArticleAddSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Article
+        exclude = ('image',)
+
+
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
