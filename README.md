@@ -1,4 +1,4 @@
 # Simple Microblog
 Blog based on Clean Blog template
 
-[Preview](http://imgur.com/kRiysCm)
+![](http://demo2.livius.waw.pl/demo.gif)
