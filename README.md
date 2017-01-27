@@ -8,5 +8,8 @@ Blog based on Clean Blog template ([Preview](http://imgur.com/kRiysCm))
 * Interactive guest book
 * Internationalization
 * REST API
-* Support for ASS
+* Support for RSS
 * Clean, simple and responsive theme
+
+# Requirements
+See requirements folder
