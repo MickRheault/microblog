@@ -9,6 +9,7 @@ Blog based on Clean Blog template ([Preview](http://imgur.com/kRiysCm))
 * Internationalization
 * REST API
 * Support for RSS
+* WYSIWYG markdown editor
 * Clean, simple and responsive theme
 
 # Requirements
