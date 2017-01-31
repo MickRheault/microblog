@@ -5,6 +5,7 @@ Django==1.9.9
 django-markdown==0.8.4
 django-simple-captcha==0.5.2
 django-cleanup==0.4.2
+djangorestframework==3.5.3
 
 # Django/Apps dependencies 
 Pillow==3.3.1

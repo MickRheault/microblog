@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'django_markdown',
     'captcha',
     'django_cleanup',
+    'rest_framework',
+    'rest_framework.authtoken',
     # My apps
     'article',
     'tag',
@@ -35,6 +37,7 @@ INSTALLED_APPS = [
     'other',
     'core',
     'file',
+    'api'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -133,13 +136,20 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Names reserved for apps etc.
-PROHIBITED_NAMES = ['author', 'tag', 'guest_book', 'other', 'file']
+PROHIBITED_NAMES = ['author', 'tag', 'guest_book', 'other', 'file', 'api']
 
 # Project version
-VERSION = '0.5.4'
+VERSION = '0.6'
 
 # This must be always at the of file
 DEV_APPS = None
+
+# Rest config
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
 
 try:
     from .local_settings import *
