@@ -14,13 +14,19 @@ class ArticleSerializer(serializers.ModelSerializer):
 class ArticleAddSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
-        exclude = ('image',)
+        exclude = ('image', 'author')
 
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
         fields = ('title', 'created_by', 'creation_date')
+
+
+class TagAddSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        exclude = ('created_by',)
 
 
 class UserSerializer(serializers.ModelSerializer):
