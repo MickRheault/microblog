@@ -139,7 +139,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 PROHIBITED_NAMES = ['author', 'tag', 'guest_book', 'other', 'file', 'api']
 
 # Project version
-VERSION = '0.6.1'
+VERSION = '0.6.2'
 
 # This must be always at the of file
 DEV_APPS = None
