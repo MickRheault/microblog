@@ -2,8 +2,7 @@
 <html lang="en">
 
 <head>
-    {% load static core %}
-    {% load i18n %}
+    {% load static core i18n %}
 
     <style type="text/css">
         @font-face {
@@ -20,10 +19,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    {% block meta %}
+        <meta name="description" content="{{ description }}">
+        <meta name="keywords" content="{{ keywords }}">
+        <meta name="author" content="{{ author }}">
+    {% endblock %}
 
-    <title>{% block title %}Clean Blog{% endblock %}</title>
+    <title>{% block title %}{{ title }}{% endblock %}</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -61,7 +63,7 @@
                     <span class="sr-only">Toggle navigation</span>
                     Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="{% url 'article:list' %}">Clean Blog</a>
+                <a class="navbar-brand" href="{% url 'article:list' %}">{{ title }}</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -98,7 +100,7 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="{% block header_type %}site{% endblock %}-heading">
-                        {% block header_title %}<h1>Clean Blog</h1>{% endblock %}
+                        {% block header_title %}<h1>{{ title }}</h1>{% endblock %}
                         {% block header_hr %}<hr class="small"> {% endblock %}
                         {% block header_subheading %}<span class="subheading">Let's Change the World</span>{% endblock %}
                         {% block header_meta %} {% endblock %}

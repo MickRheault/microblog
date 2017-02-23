@@ -64,6 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'microblog.context_processors.meta'
             ],
         },
     },
@@ -141,15 +142,24 @@ PROHIBITED_NAMES = ['author', 'tag', 'guest_book', 'other', 'file', 'api']
 # Project version
 VERSION = '0.6.2'
 
-# This must be always at the of file
-DEV_APPS = None
-
 # Rest config
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
     ),
 }
+
+# Meta setup
+META = {
+    'title': 'Clean Blog',
+    'subheading': "Let's Change the World",
+    'description': "Let's Change the World",
+    'keywords': 'blog',
+    'author': 'lukas346'
+}
+
+# This must be always at the of file
+DEV_APPS = None
 
 try:
     from .local_settings import *

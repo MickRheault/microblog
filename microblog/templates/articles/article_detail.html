@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
-{% load i18n static %}
+{% load i18n static django_markdown %}
+{% block meta %}
+    <meta name="description" content="{{ article.desc }}">
+    <meta name="keywords" content="{% for tag in article.tags.all %}{{ tag }},{% endfor %}">
+    <meta name="author" content="{{ article.author }}">
+{% endblock %}
 
 {% block header_type %}post{% endblock %}
 {% block header_image %}{{ article.image_url|default_if_none:'http://www.freevector.com/uploads/vector/preview/6044/FreeVector-Colorful-Shapes-Background.jpg' }}{% endblock %}
@@ -7,8 +12,9 @@
 {% block header_hr %}{% endblock %}
 {% block header_subheading %}{% endblock %}
 {% block header_meta %}<span class="meta">{% trans 'Posted by' %} <a href="{% url 'article:author-list' article.author %}">{{ article.author }}</a> {% trans 'on' %} {{ article.publish_date }}</span>{% endblock %}
-{% load django_markdown %}
+
 {% block extra_css %}<link href="{% static 'css/imgbox.css' %}" rel="stylesheet">{% endblock %}
+
 {% block main_content %}
     <article>
         <div class="container">
