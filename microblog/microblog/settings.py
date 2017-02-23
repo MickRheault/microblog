@@ -65,7 +65,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'microblog.context_processors.meta',
-                'microblog.context_processors.navigation'
+                'microblog.context_processors.navigation',
+                'microblog.context_processors.settings'
             ],
         },
     },
