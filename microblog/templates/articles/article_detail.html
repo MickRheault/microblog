@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n static django_markdown %}
+{% load static django_markdown %}
 {% block meta %}
     <meta name="description" content="{{ article.desc }}">
     <meta name="keywords" content="{% for tag in article.tags.all %}{{ tag }},{% endfor %}">
@@ -11,7 +11,7 @@
 {% block header_title %}<h1>{{ article.title }}</h1>{% endblock %}
 {% block header_hr %}{% endblock %}
 {% block header_subheading %}{% endblock %}
-{% block header_meta %}<span class="meta">{% trans 'Posted by' %} <a href="{% url 'article:author-list' article.author %}">{{ article.author }}</a> {% trans 'on' %} {{ article.publish_date }}</span>{% endblock %}
+{% block header_meta %}<span class="meta">Wrzucone przez <a href="{% url 'article:author-list' article.author %}">{{ article.author }}</a> dnia {{ article.publish_date }}</span>{% endblock %}
 
 {% block extra_css %}<link href="{% static 'css/imgbox.css' %}" rel="stylesheet">{% endblock %}
 

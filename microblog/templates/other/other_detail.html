@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
-{% load i18n %}
 
 {% block header_type %}post{% endblock %}
 {% block header_image %}{{ other.image_url|default_if_none:'http://www.freevector.com/uploads/vector/preview/6044/FreeVector-Colorful-Shapes-Background.jpg' }}{% endblock %}
 {% block header_title %}<h1>{{ other.title }}</h1>{% endblock %}
 {% block header_hr %}{% endblock %}
 {% block header_subheading %}{% endblock %}
-{% block header_meta %}<span class="meta">{% trans 'Posted by' %} <a href="#">{{ other.author }}</a> {% trans 'on' %} {{ other.creation_date }}</span>{% endblock %}
+{% block header_meta %}<span class="meta">Opublikował <a href="#">{{ other.author }}</a> dnia {{ other.creation_date }}</span>{% endblock %}
 
 {% block main_content %}
     <article>

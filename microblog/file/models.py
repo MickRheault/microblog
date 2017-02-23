@@ -2,7 +2,6 @@ import os
 
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ValidationError
 
 
@@ -11,18 +10,18 @@ def validate_file_extension(value):
     allowed_ext = ['jpg', 'png', 'jpeg', 'pdf', 'txt', 'mp3', 'mp4', 'avi', 'mkv']
 
     if ext not in allowed_ext:
-        raise ValidationError(_('Unsupported file extension.'))
+        raise ValidationError('Niewspierane rozszerzenie.')
 
 
 class File(models.Model):
-    title = models.CharField(max_length=60, verbose_name=_('Title'))
+    title = models.CharField(max_length=60, verbose_name='Tytuł')
     author = models.ForeignKey(User)
     creation_date = models.DateTimeField(auto_now_add=True)
-    file = models.FileField(verbose_name=_('Upload file'), upload_to='file/', validators=[validate_file_extension])
+    file = models.FileField(verbose_name='Wyślij plik', upload_to='file/', validators=[validate_file_extension])
 
     class Meta:
-        verbose_name = _('File')
-        verbose_name_plural = _('Files')
+        verbose_name = 'Plik'
+        verbose_name_plural = 'Pliki'
         ordering = ['-pk']
 
     def __str__(self):

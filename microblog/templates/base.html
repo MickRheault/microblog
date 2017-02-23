@@ -1,9 +1,9 @@
+{% load static core %}
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    {% load static core i18n %}
-
     <style type="text/css">
         @font-face {
             font-family: "Myriad Pro";
@@ -70,22 +70,23 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="{% url 'article:list' %}">{% trans 'Home' %}</a>
+                        <a href="{% url 'article:list' %}">Strona główna</a>
                     </li>
                     {% if searchform %}
                     <li>
-                        <a href="#" data-toggle="modal" data-target="#searchmodal">{% trans 'Search' %}</a>
+                        <a href="#" data-toggle="modal" data-target="#searchmodal">Wyszukaj</a>
                     </li>
                     {% endif %}
-                    <li>
-                        <a href="{% url 'other:detail' 'about' %}">{% trans 'About' %}</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'guest-book:index' %}">{% trans 'Guest Book' %}</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'other:detail' 'contact' %}">{% trans 'Contact' %}</a>
-                    </li>
+                    {% if 'guest_book' in installed_apps %}
+                        <li>
+                            <a href="{% url 'guest-book:index' %}">Księga gości</a>
+                        </li>
+                    {% endif %}
+                    {% for nav in nav_list %}
+                        <li>
+                            <a href="{{ nav.url }}">{{ nav.name }}</a>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -95,7 +96,7 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('{% block header_image %}{% static 'img/home-bg.jpg' %}{% endblock %}')">
+    <header class="intro-header" style="background-image: url('{% block header_image %}{{ image }}{% endblock %}')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">

@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils.translation import ugettext_lazy as _
 
 from tag.models import Tag
 from core.utils import image_directory_path
@@ -16,22 +15,22 @@ class PublishedManager(models.Manager):
 
 
 class Article(models.Model):
-    title = models.CharField(max_length=80, verbose_name=_('Title'), unique=True, validators=[validate_title])
-    slug = models.SlugField(max_length=80, verbose_name=_('Slug'), unique=True)
-    text = models.TextField(verbose_name=_('Text'))
-    desc = models.CharField(verbose_name=_('Description'), default='', max_length=400)
-    author = models.ForeignKey(User, verbose_name=_('Author'))
+    title = models.CharField(max_length=80, verbose_name='Tytuł', unique=True, validators=[validate_title])
+    slug = models.SlugField(max_length=80, verbose_name='Slug', unique=True)
+    text = models.TextField(verbose_name='Tekst')
+    desc = models.CharField(verbose_name='Opis', default='', max_length=400)
+    author = models.ForeignKey(User, verbose_name='Autor')
     creation_date = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(blank=True, verbose_name=_('Image'), upload_to=image_directory_path)
-    publish = models.BooleanField(default=False, verbose_name=_('Publish'))
+    image = models.ImageField(blank=True, verbose_name='Obraz', upload_to=image_directory_path)
+    publish = models.BooleanField(default=False, verbose_name='Opublikuj')
     publish_date = models.DateTimeField(blank=True, null=True)
-    tags = models.ManyToManyField(Tag, verbose_name=_('Tags'))
+    tags = models.ManyToManyField(Tag, verbose_name='Tagi')
 
     objects = PublishedManager()
 
     class Meta:
-        verbose_name = _('Article')
-        verbose_name_plural = _('Articles')
+        verbose_name = 'Artykuł'
+        verbose_name_plural = 'Artykuły'
         ordering = ['-pk']
 
     def __str__(self):

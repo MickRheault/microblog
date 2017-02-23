@@ -64,7 +64,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'microblog.context_processors.meta'
+                'microblog.context_processors.meta',
+                'microblog.context_processors.navigation',
+                'microblog.context_processors.settings'
             ],
         },
     },
@@ -102,18 +104,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-
-LANGUAGE_CODE = 'en-us'
-
-LANGUAGES = (
-    ('en-us', 'English'),
-    ('pl-pl','Polish'),
-)
-
-LOCALE_PATHS = (
-    os.path.join(BASE_DIR, 'core', 'locale'),
-)
-
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -137,10 +127,10 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Names reserved for apps etc.
-PROHIBITED_NAMES = ['author', 'tag', 'guest_book', 'other', 'file', 'api']
+PROHIBITED_NAMES = ['author', 'tag', 'guest_book', 'other', 'file', 'api', 'lang']
 
 # Project version
-VERSION = '0.6.4'
+VERSION = '0.7'
 
 # Rest config
 REST_FRAMEWORK = {
@@ -155,7 +145,8 @@ META = {
     'subheading': "Let's Change the World",
     'description': "Let's Change the World",
     'keywords': 'blog',
-    'author': 'lukas346'
+    'author': 'lukas346',
+    'image': os.path.join(STATIC_ROOT, 'img/home-bg.jpg')
 }
 
 # This must be always at the of file
