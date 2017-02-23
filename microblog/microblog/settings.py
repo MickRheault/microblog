@@ -103,18 +103,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-
-LANGUAGE_CODE = 'en-us'
-
-LANGUAGES = (
-    ('en-us', 'English'),
-    ('pl-pl','Polish'),
-)
-
-LOCALE_PATHS = (
-    os.path.join(BASE_DIR, 'core', 'locale'),
-)
-
 TIME_ZONE = 'UTC'
 
 USE_I18N = True

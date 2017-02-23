@@ -1,15 +1,14 @@
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
 
 
 class GuessBookEntry(models.Model):
-    author = models.CharField(max_length=70, verbose_name=_('Author'))
-    text = models.CharField(max_length=400, verbose_name=_('Text'))
+    author = models.CharField(max_length=70, verbose_name='Autor')
+    text = models.CharField(max_length=400, verbose_name='Tekst')
     creation_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        verbose_name = _('Entry')
-        verbose_name_plural = _('Entries')
+        verbose_name = 'Wpis'
+        verbose_name_plural = 'Wpisy'
         ordering = ['-pk']
 
     def __str__(self):

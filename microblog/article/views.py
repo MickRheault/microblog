@@ -2,7 +2,6 @@ from django.contrib.syndication.views import Feed
 from django.views.generic import ListView, DetailView
 from django.http import Http404
 from django.core.urlresolvers import reverse_lazy
-from django.utils.translation import ugettext as _
 
 from .models import Article
 from .forms import SearchForm
@@ -60,7 +59,7 @@ class ArticleAuthorListView(ArticleSearchMixin, ListView):
 
 
 class LatestArticlesFeed(Feed):
-    title = _("Latest Articles")
+    title = 'Najnowsze Artykuły'
     link = "/"
 
     def items(self):

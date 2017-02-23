@@ -1,21 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils.translation import ugettext_lazy as _
 
 from core.utils import image_directory_path
 
 
 class Other(models.Model):
-    title = models.CharField(verbose_name=_('Title'), max_length=70, unique=True)
-    slug = models.SlugField(verbose_name=_('Slug'), unique=True)
-    text = models.TextField(verbose_name=_('Text'))
-    image = models.ImageField(upload_to=image_directory_path, verbose_name=_('Image'), blank=True)
-    creation_date = models.DateTimeField(verbose_name=_('Creation Date'), auto_now_add=True)
+    title = models.CharField(verbose_name='Tytuł', max_length=70, unique=True)
+    slug = models.SlugField(verbose_name='Slug', unique=True)
+    text = models.TextField(verbose_name='Tekst')
+    image = models.ImageField(upload_to=image_directory_path, verbose_name='Obraz', blank=True)
+    creation_date = models.DateTimeField(verbose_name='Data utworzenia', auto_now_add=True)
     author = models.ForeignKey(User)
 
     class Meta:
-        verbose_name = _('Other')
-        verbose_name_plural = _('Others')
+        verbose_name = 'Reszta'
+        verbose_name_plural = 'Inne'
 
     def __str__(self):
         return self.title

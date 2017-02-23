@@ -1,5 +1,4 @@
-{% load static core i18n %}
-{% get_current_language as LANGUAGE_CODE %}
+{% load static core %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -71,23 +70,21 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="{% url 'article:list' %}">{% trans 'Home' %}</a>
+                        <a href="{% url 'article:list' %}">Strona główna</a>
                     </li>
                     {% if searchform %}
                     <li>
-                        <a href="#" data-toggle="modal" data-target="#searchmodal">{% trans 'Search' %}</a>
+                        <a href="#" data-toggle="modal" data-target="#searchmodal">Wyszukaj</a>
                     </li>
                     {% endif %}
                     <li>
-                        <a href="{% url 'guest-book:index' %}">{% trans 'Guest Book' %}</a>
+                        <a href="{% url 'guest-book:index' %}">Księga gości</a>
                     </li>
-                    {% if LANGUAGE_CODE == 'pl-pl' %}
-                        {% for nav in nav_list %}
-                            <li>
-                                <a href="{{ nav.url }}">{% trans nav.name %}</a>
-                            </li>
-                        {% endfor %}
-                    {% endif %}
+                    {% for nav in nav_list %}
+                        <li>
+                            <a href="{{ nav.url }}">{{ nav.name }}</a>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
