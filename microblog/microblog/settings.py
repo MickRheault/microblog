@@ -144,7 +144,8 @@ META = {
     'subheading': "Let's Change the World",
     'description': "Let's Change the World",
     'keywords': 'blog',
-    'author': 'lukas346'
+    'author': 'lukas346',
+    'image': os.path.join(STATIC_ROOT, 'img/home-bg.jpg')
 }
 
 # This must be always at the of file
