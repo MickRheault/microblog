@@ -64,7 +64,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'microblog.context_processors.meta'
+                'microblog.context_processors.meta',
+                'microblog.context_processors.navigation'
             ],
         },
     },
@@ -137,7 +138,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Names reserved for apps etc.
-PROHIBITED_NAMES = ['author', 'tag', 'guest_book', 'other', 'file', 'api']
+PROHIBITED_NAMES = ['author', 'tag', 'guest_book', 'other', 'file', 'api', 'lang']
 
 # Project version
 VERSION = '0.6.4'

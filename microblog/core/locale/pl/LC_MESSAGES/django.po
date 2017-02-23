@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-06 17:26+0000\n"
+"POT-Creation-Date: 2017-02-23 20:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: article/forms.py:7 templates/base.html:75
+#: article/forms.py:7 templates/base.html:78
 msgid "Search"
 msgstr "Wyszukaj"
 
@@ -72,6 +72,22 @@ msgstr "nazwa %s jest zakazana"
 msgid "Latest Articles"
 msgstr "Najnowsze Artykuły"
 
+#: core/models.py:6
+msgid "Name"
+msgstr "Nazwa"
+
+#: core/models.py:7
+msgid "Url"
+msgstr ""
+
+#: core/models.py:8
+msgid "Ordering"
+msgstr "Kolejność"
+
+#: core/models.py:11 core/models.py:12
+msgid "Navigation"
+msgstr "Nawigacja"
+
 #: file/models.py:14
 msgid "Unsupported file extension."
 msgstr "Niewspierane rozszerzenie."
@@ -116,13 +132,13 @@ msgstr "Utworzone przez"
 msgid "Tag"
 msgstr "Tag"
 
-#: templates/articles/article_detail.html:9
-#: templates/articles/article_list.html:16 templates/other/other_detail.html:8
+#: templates/articles/article_detail.html:14
+#: templates/articles/article_list.html:16 templates/other/other_detail.html:9
 msgid "Posted by"
 msgstr "Wrzucone przez"
 
-#: templates/articles/article_detail.html:9
-#: templates/articles/article_list.html:16 templates/other/other_detail.html:8
+#: templates/articles/article_detail.html:14
+#: templates/articles/article_list.html:16 templates/other/other_detail.html:9
 msgid "on"
 msgstr "dnia"
 
@@ -130,29 +146,21 @@ msgstr "dnia"
 msgid "Tags:"
 msgstr "Tagi:"
 
-#: templates/articles/article_list.html:34
+#: templates/articles/article_list.html:36
 msgid "Older Posts"
 msgstr "Starsze"
 
-#: templates/articles/article_list.html:38
+#: templates/articles/article_list.html:40
 msgid "Newer Posts"
 msgstr "Nowsze"
 
-#: templates/base.html:71
+#: templates/base.html:74
 msgid "Home"
 msgstr "Strona Główna"
-
-#: templates/base.html:79
-msgid "About"
-msgstr "O mnie"
 
 #: templates/base.html:82 templates/guest_book/guest_book.html:6
 msgid "Guest Book"
 msgstr "Księga gości"
-
-#: templates/base.html:85
-msgid "Contact"
-msgstr "Kontakt"
 
 #: templates/captcha/image.html:3
 msgid "Play CAPTCHA as audio file"
@@ -165,3 +173,9 @@ msgstr "Kolejna księga gości napisana w django i jquery"
 #: templates/guest_book/guest_book.html:21
 msgid "Submit"
 msgstr "Wyślij"
+
+#~ msgid "About"
+#~ msgstr "O mnie"
+
+#~ msgid "Contact"
+#~ msgstr "Kontakt"
