@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     # My apps
+    'account',
     'article',
     'tag',
     'guest_book',
@@ -105,11 +106,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
@@ -121,6 +119,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'templates', 'static')
 ]
+
+AUTH_USER_MODEL = 'account.User'
 
 # Media files
 MEDIA_URL = '/media/'
@@ -146,7 +146,7 @@ META = {
     'description': "Let's Change the World",
     'keywords': 'blog',
     'author': 'lukas346',
-    'image': os.path.join(STATIC_ROOT, 'img/home-bg.jpg')
+    'image': STATIC_URL + '/img/home-bg.jpg'
 }
 
 # This must be always at the of file

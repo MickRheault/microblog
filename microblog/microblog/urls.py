@@ -12,7 +12,10 @@ urlpatterns = [
     url(r'^tag/', include('tag.urls', namespace='tag')),
     url(r'^api/v0.1/', include('api.urls', namespace='api')),
     url(r'^', include('article.urls', namespace='article')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
 
 if 'guest_book' in settings.INSTALLED_APPS:
     urlpatterns = [url(r'^guest-book/', include('guest_book.urls', namespace='guest-book'))] + urlpatterns
+
+if settings.DEBUG:
+    urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

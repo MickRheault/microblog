@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from django.conf import settings
 from rest_framework import serializers
 
 from article.models import Article
@@ -31,5 +31,5 @@ class TagAddSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
+        model = settings.AUTH_USER_MODEL
         fields = ('username', 'first_name', 'last_name')

@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from django.conf import settings
 
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
@@ -79,5 +79,5 @@ class TagDeleteView(DeleteMixin, APIView):
 
 class UserListView(ListSerializerMixin, APIView):
     http_method_names = ['get']
-    model = User
+    model = settings.AUTH_USER_MODEL
     serializer = UserSerializer
