@@ -1,7 +1,7 @@
 import os
 
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 from django.core.exceptions import ValidationError
 
 
@@ -15,7 +15,7 @@ def validate_file_extension(value):
 
 class File(models.Model):
     title = models.CharField(max_length=60, verbose_name='Tytuł')
-    author = models.ForeignKey(User)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL)
     creation_date = models.DateTimeField(auto_now_add=True)
     file = models.FileField(verbose_name='Wyślij plik', upload_to='file/', validators=[validate_file_extension])
 

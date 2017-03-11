@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 
 from tag.models import Tag
 from core.utils import image_directory_path
@@ -19,7 +19,7 @@ class Article(models.Model):
     slug = models.SlugField(max_length=80, verbose_name='Slug', unique=True)
     text = models.TextField(verbose_name='Tekst')
     desc = models.CharField(verbose_name='Opis', default='', max_length=400)
-    author = models.ForeignKey(User, verbose_name='Autor')
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Autor')
     creation_date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(blank=True, verbose_name='Obraz', upload_to=image_directory_path)
     publish = models.BooleanField(default=False, verbose_name='Opublikuj')

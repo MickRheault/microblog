@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 
 from core.utils import image_directory_path
 
@@ -10,7 +10,7 @@ class Other(models.Model):
     text = models.TextField(verbose_name='Tekst')
     image = models.ImageField(upload_to=image_directory_path, verbose_name='Obraz', blank=True)
     creation_date = models.DateTimeField(verbose_name='Data utworzenia', auto_now_add=True)
-    author = models.ForeignKey(User)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL)
 
     class Meta:
         verbose_name = 'Reszta'
