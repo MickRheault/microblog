@@ -73,6 +73,15 @@ TEMPLATES = [
     },
 ]
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+    }
+}
+
+CACHE_TIME = 60 * 60 * 48
+
 WSGI_APPLICATION = 'microblog.wsgi.application'
 
 
