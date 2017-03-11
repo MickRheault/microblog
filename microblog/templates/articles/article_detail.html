@@ -13,7 +13,8 @@
 {% block header_subheading %}{% endblock %}
 {% block header_meta %}<span class="meta">Wrzucone przez <a href="{% url 'article:author-list' article.author %}">{{ article.author }}</a> dnia {{ article.publish_date }}</span>{% endblock %}
 
-{% block extra_css %}<link href="{% static 'css/imgbox.css' %}" rel="stylesheet">{% endblock %}
+{% block extra_css %}
+    <link href="{% static 'css/imgbox.css' %}" rel="stylesheet">{% endblock %}
 
 {% block main_content %}
     <article>
@@ -25,6 +26,18 @@
             </div>
         </div>
     </article>
+    {% if article.author.avatar and article.author.about_me %}
+    <section class="about-author">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <img src="{{ article.author.avatar.url }}" class="img-circle" />
+                    {{ article.author.about_me }}
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
 {% endblock %}
 
 {% block extra_js %}
