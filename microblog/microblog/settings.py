@@ -73,6 +73,15 @@ TEMPLATES = [
     },
 ]
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+    }
+}
+
+CACHE_TIME = 60 * 60 * 48
+
 WSGI_APPLICATION = 'microblog.wsgi.application'
 
 
@@ -130,7 +139,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 PROHIBITED_NAMES = ['author', 'tag', 'guest_book', 'other', 'file', 'api', 'lang']
 
 # Project version
-VERSION = '0.7.2'
+VERSION = '0.8'
 
 # Rest config
 REST_FRAMEWORK = {
