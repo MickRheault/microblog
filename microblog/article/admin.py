@@ -14,7 +14,10 @@ class ArticleAdmin(admin.ModelAdmin):
     fields = ('title', 'desc', 'text', 'image', 'publish', 'tags')
 
     def link(self, obj):
-        return reverse('article:detail', kwargs={'slug': obj.slug})
+        link = reverse('article:detail', kwargs={'slug': obj.slug})
+        return '<a href="%s">%s</a>' % (link, link)
+
+    link.allow_tags = True
 
     def save_model(self, request, obj, form, change):
         obj.author = request.user
