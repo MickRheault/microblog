@@ -24,7 +24,7 @@ class Article(models.Model):
     image = models.ImageField(blank=True, verbose_name='Obraz', upload_to=image_directory_path)
     publish = models.BooleanField(default=False, verbose_name='Opublikuj')
     publish_date = models.DateTimeField(blank=True, null=True)
-    tags = models.ManyToManyField(Tag, verbose_name='Tagi')
+    tags = models.ManyToManyField(Tag, verbose_name='Tagi', related_name='articles')
 
     objects = PublishedManager()
 
