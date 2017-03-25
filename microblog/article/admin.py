@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.utils import timezone
 from django.utils.text import slugify
 from django.forms.widgets import Textarea
+from django.core.urlresolvers import reverse
 
 from django_markdown.admin import AdminMarkdownWidget
 
@@ -9,8 +10,11 @@ from .models import Article
 
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'creation_date',)
+    list_display = ('title', 'author', 'link', 'creation_date',)
     fields = ('title', 'desc', 'text', 'image', 'publish', 'tags')
+
+    def link(self, obj):
+        return reverse('article:detail', kwargs={'slug': obj.slug})
 
     def save_model(self, request, obj, form, change):
         obj.author = request.user
