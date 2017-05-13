@@ -4,10 +4,8 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 
-@import 'https://fonts.googleapis.com/css?family=Fira+Sans';
-
 body {
-  font-family: 'Myriad Pro', 'Times New Roman', serif;
+  font-family: 'PT Sans', 'Times New Roman', serif;
   font-size: 18px;
   line-height: 120%;
   color: #333333;
