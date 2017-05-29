@@ -1,10 +1,6 @@
 from core.models import Navigation, SiteMeta, Footer
 
-from .settings import META, INSTALLED_APPS
-
-
-def meta(request):
-    return META
+from .settings import INSTALLED_APPS
 
 
 def settings(request):
