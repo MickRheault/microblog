@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static django_markdown %}
+{% load static markdown %}
 {% block meta %}
     <meta name="description" content="{{ article.desc }}">
     <meta name="keywords" content="{% for tag in article.tags.all %}{{ tag }},{% endfor %}">
@@ -21,7 +21,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    {{ article.text|markdown }}
+                    {{ article.text|markdownify|safe }}
                 </div>
             </div>
         </div>

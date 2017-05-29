@@ -4,6 +4,7 @@ from django.http import Http404
 from django.core.urlresolvers import reverse_lazy
 from django.core.exceptions import PermissionDenied
 
+
 from .models import Article
 from .forms import SearchForm
 
