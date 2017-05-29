@@ -66,7 +66,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'microblog.context_processors.meta',
                 'microblog.context_processors.navigation',
                 'microblog.context_processors.settings',
                 'microblog.context_processors.footer',
@@ -142,7 +141,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 PROHIBITED_NAMES = ['author', 'tag', 'guest_book', 'other', 'file', 'api', 'lang']
 
 # Project version
-VERSION = '0.8.5.1'
+VERSION = '0.8.5.2'
 
 # Rest config
 REST_FRAMEWORK = {
