@@ -4,7 +4,7 @@ from django.utils.text import slugify
 from django.forms.widgets import Textarea
 from django.core.urlresolvers import reverse
 
-from django_markdown.admin import AdminMarkdownWidget
+from markdownx.admin import AdminMarkdownxWidget
 
 from .models import Article
 
@@ -36,7 +36,7 @@ class ArticleAdmin(admin.ModelAdmin):
         if db_field.name == 'desc':
             kwargs['widget'] = Textarea
         if db_field.name == 'text':
-            kwargs['widget'] = AdminMarkdownWidget
+            kwargs['widget'] = AdminMarkdownxWidget
 
         return super(ArticleAdmin, self).formfield_for_dbfield(db_field, **kwargs)
 
