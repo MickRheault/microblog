@@ -25,7 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Third-party apps
-    'django_markdown',
+    'markdownx',
     'captcha',
     'django_cleanup',
     'rest_framework',
@@ -157,6 +157,11 @@ META = {
     'author': 'lukas346',
     'image': STATIC_URL + '/img/home-bg.jpg'
 }
+
+# Markdownx setup
+MARKDOWNX_MARKDOWN_EXTENSIONS = [
+    'markdown.extensions.extra'
+]
 
 # This must be always at the of file
 DEV_APPS = None

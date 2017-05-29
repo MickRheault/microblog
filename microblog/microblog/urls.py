@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^captcha/', include('captcha.urls')),
-    url('^markdown/', include('django_markdown.urls')),
+    url(r'^markdownx/', include('markdownx.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^other/', include('other.urls', namespace='other')),
     url(r'^tag/', include('tag.urls', namespace='tag')),
