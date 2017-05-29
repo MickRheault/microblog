@@ -25,12 +25,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% block meta %}
-        <meta name="description" content="{{ description }}">
-        <meta name="keywords" content="{{ keywords }}">
-        <meta name="author" content="{{ author }}">
+        <meta name="description" content="{{ site_meta.description }}">
+        <meta name="keywords" content="{{ site_meta.keywords }}">
+        <meta name="author" content="{{ site_meta.author }}">
     {% endblock %}
 
-    <title>{% block title %}{{ title }}{% endblock %}</title>
+    <title>{% block title %}{{ site_meta.title }}{% endblock %}</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -71,7 +71,7 @@
                 <span class="sr-only">Toggle navigation</span>
                 Menu <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="{% url 'article:list' %}">{{ title }}</a>
+            <a class="navbar-brand" href="{% url 'article:list' %}">{{ site_meta.title }}</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -115,7 +115,7 @@
 
 <!-- Page Header -->
 <!-- Set your background image for this header on the line below. -->
-<header class="intro-header" style="background-image: url('{% block header_image %}{{ image }}{% endblock %}')">
+<header class="intro-header" style="background-image: url('{% block header_image %}{{ site_meta.image.url }}{% endblock %}')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -123,7 +123,7 @@
                     {% block header_title %}<h1>{{ title }}</h1>{% endblock %}
                     {% block header_hr %}
                         <hr class="small"> {% endblock %}
-                    {% block header_subheading %}<span class="subheading">{{ subheading }}</span>{% endblock %}
+                    {% block header_subheading %}<span class="subheading">{{ site_meta.subheading }}</span>{% endblock %}
                     {% block header_meta %} {% endblock %}
                 </div>
             </div>
@@ -142,30 +142,36 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <ul class="list-inline text-center">
+                    {% if footer.twitter|length > 0 %}
                     <li>
-                        <a href="#">
+                        <a href="{{ footer.twitter }}">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
                                 </span>
                         </a>
                     </li>
+                    {% endif %}
+                    {% if footer.facebook|length > 0 %}
                     <li>
-                        <a href="#">
+                        <a href="{{ footer.facebook }}">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
                                 </span>
                         </a>
                     </li>
+                    {% endif %}
+                    {% if footer.github|length > 0 %}
                     <li>
-                        <a href="#">
+                        <a href="{{ footer.github }}">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-github fa-stack-1x fa-inverse"></i>
                                 </span>
                         </a>
                     </li>
+                    {% endif %}
                 </ul>
                 <p class="copyright text-muted">Copyright &copy; 2016 Clean Blog {% version %}v </p>
             </div>

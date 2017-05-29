@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django_cleanup',
     'rest_framework',
     'rest_framework.authtoken',
+    'solo',
     # My apps
     'account',
     'article',
@@ -67,7 +68,9 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'microblog.context_processors.meta',
                 'microblog.context_processors.navigation',
-                'microblog.context_processors.settings'
+                'microblog.context_processors.settings',
+                'microblog.context_processors.footer',
+                'microblog.context_processors.site_meta'
             ],
         },
     },
@@ -139,23 +142,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 PROHIBITED_NAMES = ['author', 'tag', 'guest_book', 'other', 'file', 'api', 'lang']
 
 # Project version
-VERSION = '0.8.3'
+VERSION = '0.8.5'
 
 # Rest config
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
     ),
-}
-
-# Meta setup
-META = {
-    'title': 'Clean Blog',
-    'subheading': "Let's Change the World",
-    'description': "Let's Change the World",
-    'keywords': 'blog',
-    'author': 'lukas346',
-    'image': STATIC_URL + '/img/home-bg.jpg'
 }
 
 # Markdownx setup
