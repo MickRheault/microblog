@@ -123,7 +123,7 @@
                     {% block header_title %}<h1>{{ title }}</h1>{% endblock %}
                     {% block header_hr %}
                         <hr class="small"> {% endblock %}
-                    {% block header_subheading %}<span class="subheading">{{ site_meta.subheading }}</span>{% endblock %}
+                    {% block header_subheading %}<span class="subheading">{% if site_meta.subheading|length > 0 %}{{ site_meta.subheading.url }}{% endif %}</span>{% endblock %}
                     {% block header_meta %} {% endblock %}
                 </div>
             </div>
