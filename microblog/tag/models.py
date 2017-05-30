@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 
+
 class Tag(models.Model):
     title = models.CharField(max_length=50, verbose_name='Tytuł', unique=True)
     slug = models.CharField(max_length=50, verbose_name='Slug', unique=True)
