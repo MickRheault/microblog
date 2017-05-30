@@ -1,10 +1,10 @@
 from django.views.generic import ListView
 from django.http import Http404
 
-from article.views import ArticleSearchMixin
+from article.views import ArticleMixin
 
 
-class TagsListView(ArticleSearchMixin, ListView):
+class TagsListView(ArticleMixin, ListView):
     template_name = 'articles/article_list.html'
     context_object_name = 'articles'
 

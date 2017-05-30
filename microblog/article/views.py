@@ -3,10 +3,9 @@ from django.views.generic import ListView, DetailView
 from django.http import Http404
 from django.core.urlresolvers import reverse_lazy
 from django.core.exceptions import PermissionDenied
-
+from django.db.models import Q
 
 from .models import Article
-from .forms import SearchForm
 
 
 class ArticleMixin(object):
@@ -16,22 +15,7 @@ class ArticleMixin(object):
         return queryset
 
 
-class ArticleSearchMixin(ArticleMixin):
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['searchform'] = SearchForm()
-
-        return context
-
-    def get_queryset(self):
-        queryset = super().get_queryset()
-
-        if self.request.GET.get('search'):
-            queryset = queryset.filter(title__icontains=self.request.GET.get('search'))
-        return queryset
-
-
-class ArticleListView(ArticleSearchMixin, ListView):
+class ArticleListView(ArticleMixin, ListView):
     template_name = 'articles/article_list.html'
     context_object_name = 'articles'
     paginate_by = 5
@@ -64,7 +48,7 @@ class ArticlePreviewView(DetailView):
         return queryset
 
 
-class ArticleAuthorListView(ArticleSearchMixin, ListView):
+class ArticleAuthorListView(ArticleMixin, ListView):
     template_name = 'articles/article_list.html'
     context_object_name = 'articles'
     paginate_by = 5
@@ -98,3 +82,17 @@ class LatestArticlesFeed(Feed):
     # item_link is only needed if NewsItem has no get_absolute_url method.
     def item_link(self, item):
         return reverse_lazy('article:detail', args=[item.slug])
+
+
+class SearchView(ArticleMixin, ListView):
+    template_name = 'articles/article_list.html'
+    context_object_name = 'articles'
+    paginate_by = 5
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        q = self.request.GET.get('q')
+
+        if q:
+            queryset = queryset.filter(Q(title__icontains=q)|Q(author__username__iexact=q))
+        return queryset
