@@ -2,40 +2,79 @@
 
 {% block main_content %}
     <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                {% for article in articles %}
-                <div class="post-preview">
+
+        {% for article in articles %}
+            {% if forloop.counter|divisibleby:2 %}
+                <div class="row">
+            {% endif %}
+        {% if forloop.counter != 1 %}
+
+            <div class="col-sm-5 col-xs-12 {% if forloop.counter|divisibleby:2 %} col-sm-offset-1 {% endif %}">
+                <div class="post-preview post-preview-extra">
                     <a href="{% url 'article:detail' article.slug %}">
-                        <h2 class="post-title">{{ article.title }}</h2>
+                        <h3 class="post-title">{{ article.title }}</h3>
+                        <img class="img img-rounded"
+                             src="{{ article.image_url|default_if_none:'http://www.freevector.com/uploads/vector/preview/6044/FreeVector-Colorful-Shapes-Background.jpg' }}">
                         <h3 class="post-subtitle">{{ article.desc }}</h3>
                     </a>
-                    <p class="post-meta pull-left">Wrzucone przez <a href="{% url 'article:author-list' article.author %}">{{ article.author }}</a> dnia
-                        {{ article.publish_date }}
+                    <p class="post-meta pull-left" style="margin-bottom: 10px">
+                        <a href="{% url 'article:author-list' article.author %}">
+                            <img src="{{ article.author.avatar.url }}" class="img-circle img-avatar"/>
+                        </a>
+                        {{ article.publish_date|date:"d M Y" }}
                     </p>
 
-                     <div class="post-meta pull-right">
-                        Tagi:
+                    <div class="post-meta pull-right" style="padding-top: 8px">
                         {% for tag in article.tags.all %}
-                            <a href="{% url 'tag:list' tag.slug %}">{{ tag }}</a>{% if forloop.last %}{% else %},{% endif %}
+                            <a href="{% url 'tag:list' tag.slug %}">{{ tag }}</a>
+                            {% if forloop.last %}{% else %},{% endif %}
                         {% endfor %}
-                     </div>
+                    </div>
                     <div class="clearfix"></div>
                 </div>
-                {% if not forloop.last %}
-                    <hr>
-                {% endif %}
-                {% endfor %}
-                <!-- Pager -->
+            </div>
+            {% if not forloop.counter|divisibleby:2 or forloop.last %}</div>{% endif %}
+        {% else %}
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1" style="margin-bottom: 30px">
+                    <div class="post-preview">
+                        <a href="{% url 'article:detail' articles.0.slug %}">
+                            <h3 class="post-title">{{ articles.0.title }}</h3>
+                            <h3 class="post-subtitle">{{ articles.0.desc }}</h3>
+                        </a>
+                        <p class="post-meta pull-left" style="margin-bottom: 10px">
+                            <a href="{% url 'article:author-list' articles.0.author %}">
+                                <img src="{{ articles.0.author.avatar.url }}" class="img-circle img-avatar"/>
+                            </a>
+                            {{ articles.0.publish_date|date:"d M Y" }}
+                        </p>
+
+                        <div class="post-meta pull-right">
+                            {% for tag in articles.0.tags.all %}
+                                <a href="{% url 'tag:list' tag.slug %}">{{ tag }}</a>
+                                {% if forloop.last %}{% else %},{% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% endfor %}
+        <!-- Pager -->
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+
                 <ul class="pager">
                     {% if page_obj.has_next %}
-                    <li class="next">
-                        <a href="?page={{ page_obj.next_page_number }}">Starsze &rarr;</a>
-                    </li>
+                        <li class="next">
+                            <a href="?page={{ page_obj.next_page_number }}">Starsze &rarr;</a>
+                        </li>
                     {% elif page_obj.has_previous %}
                         <li class="previous">
-                        <a href="?page={{ page_obj.previous_page_number }}">&larr; Nowsze</a>
-                    </li>
+                            <a href="?page={{ page_obj.previous_page_number }}">&larr; Nowsze</a>
+                        </li>
                     {% endif %}
                 </ul>
             </div>
