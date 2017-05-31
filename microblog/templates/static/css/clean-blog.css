@@ -190,6 +190,7 @@ hr.small {
     .intro-header .post-heading,
     .intro-header .page-heading {
         padding: 150px 0;
+        height: 400px;
     }
 }
 
