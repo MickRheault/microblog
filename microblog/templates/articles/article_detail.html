@@ -20,7 +20,7 @@
     <article>
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="col-lg-9 col-lg-offset-1 col-md-10 col-md-offset-1">
                     {{ article.text|markdownify|safe }}
                 </div>
             </div>
@@ -30,7 +30,7 @@
     <section class="about-author">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="col-lg-9 col-lg-offset-1 col-md-10 col-md-offset-1">
                     <a href="{% url 'article:author-list' article.author %}">
                         <img src="{{ article.author.avatar.url }}" class="img-circle"  style="cursor: pointer"/>
                     </a>
