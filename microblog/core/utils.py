@@ -4,4 +4,4 @@ def image_directory_path(instance, filename):
 
 
 def avatar_directory_path(instance, filename):
-    return  '{0}/{1}'.format(instance.username, 'avatar')
+    return 'avatar/{0}/{1}'.format(instance.username, filename)
