@@ -18,4 +18,6 @@ if 'guest_book' in settings.INSTALLED_APPS:
     urlpatterns = [url(r'^guest-book/', include('guest_book.urls', namespace='guest-book'))] + urlpatterns
 
 if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [url(r'^__debug__/', include(debug_toolbar.urls)), ] + urlpatterns
     urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,11 +1,11 @@
 # Python
 
 # Django/Apps
-Django==1.9.9
+Django<1.12
 django-markdownx==2.0.21
-django-simple-captcha==0.5.3
+django-simple-captcha==0.5.5
 django-cleanup==0.4.2
-djangorestframework==3.5.3
+djangorestframework==3.6.3
 django-solo==1.1.2
 
 # Django/Apps dependencies 
