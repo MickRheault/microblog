@@ -24,4 +24,4 @@ def site_meta(request):
 def footer(request):
     obj = Footer.get_solo()
 
-    return  {'footer': obj}
+    return {'footer': obj}
