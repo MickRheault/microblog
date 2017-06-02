@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'other',
     'core',
     'file',
-    'api'
+    'api',
+    'newsletter'
 ]
 
 MIDDLEWARE = [
