@@ -38,9 +38,9 @@ class NewsletterVerficationView(View):
         obj = form.save(commit=False)
         email_domain = obj.email.split("@")[1]
 
-        if BannedEmail.objects.filter(email=obj.email).exists():
-            raise Http404
         if BannedEmailDomain.objects.filter(domain__icontains=email_domain).exists():
+            raise Http404
+        if BannedEmail.objects.filter(email=obj.email).exists():
             raise Http404
 
         obj.token = token
@@ -82,8 +82,8 @@ class NewsletterEmailVerficationView(View):
 
         raport = Raport.get_solo()
         context = {
-            'title': raport.email_confirm_title,
-            'body': raport.email_confirm
+            'title': raport.success_title,
+            'body': raport.success
         }
 
         return render(request, self.template_name, context)
