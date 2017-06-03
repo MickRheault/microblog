@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static core %}
+{% load static core markdown %}
 
 {% block header_type %}post{% endblock %}
 {% block header_grid %}col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1{% endblock %}
@@ -11,7 +11,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-9 col-lg-offset-1 col-md-10 col-md-offset-1">
-                    {{ body }}
+                    {{ body|markdownify|safe }}
                 </div>
             </div>
         </div>
