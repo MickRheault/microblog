@@ -581,3 +581,25 @@ article img {
     color: white;
     background-color: black;
 }
+
+.newsletter {
+    background-color: #34495e;
+    margin-bottom: 30px;
+    padding: 15px 15px 20px 15px;
+    color: #ecf0f1;
+}
+
+.newsletter .info {
+    margin-top: -3px;
+}
+
+.newsletter .btn-submit {
+    margin-left: 20px;
+    padding: 8px 18px 8px 18px;
+    font-size: 0.6em;
+    border: ridge white 1px;
+}
+
+input {
+    border-radius: 0 !important;
+}

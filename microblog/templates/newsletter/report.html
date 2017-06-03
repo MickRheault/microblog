@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static core %}
+
+{% block header_type %}post{% endblock %}
+{% block header_grid %}col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1{% endblock %}
+{% block header_title %}<h1>{{ title }}</h1>{% endblock %}
+{% block header_hr %}{% endblock %}
+{% block header_subheading %}{% endblock %}
+{% block main_content %}
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 col-lg-offset-1 col-md-10 col-md-offset-1">
+                    {{ body }}
+                </div>
+            </div>
+        </div>
+    </article>
+{% endblock %}

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    Lista artykułów w tym miesiącu:<br>
+    {% for article in articles %}
+        <a href="{{ domain }}{% url 'article:detail' article.slug %}">{{ article.title }}</a><br>
+    {% endfor %}
+</body>
+</html>
