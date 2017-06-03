@@ -26,7 +26,7 @@ class Raport(SingletonModel):
     success_title = models.CharField(max_length=255, blank=True, verbose_name="Tytuł")
     success = models.TextField(verbose_name="Komunikat udanej rejestracji", blank=True)
     cancel_title = models.CharField(max_length=255, blank=True, verbose_name="Tytuł")
-    cancel = models.TextField(verbose_name="Komunikat udanej rejestracji", blank=True)
+    cancel = models.TextField(verbose_name="Komunikat anulowania", blank=True)
 
 
 class BannedEmail(models.Model):
