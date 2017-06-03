@@ -6,6 +6,7 @@ from django.core.exceptions import PermissionDenied
 from django.db.models import Q
 
 from .models import Article
+from newsletter.forms import NewsletterForm
 
 
 class ArticleMixin(object):
@@ -19,6 +20,13 @@ class ArticleListView(ArticleMixin, ListView):
     template_name = 'articles/article_list.html'
     context_object_name = 'articles'
     paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['newsletterform'] = NewsletterForm()
+
+        return context
 
 
 class ArticleDetailView(ArticleMixin, DetailView):

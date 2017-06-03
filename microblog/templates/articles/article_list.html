@@ -59,6 +59,32 @@
                     </div>
                 </div>
             </div>
+            {% if newsletterform %}
+                <!-- Newsletter -->
+                <div class="row hidden-md hidden-sm hidden-xs">
+                    <div class="col-lg-10 col-sm-offset-1">
+                        <div class="newsletter">
+                            <div class="form-inline">
+                                <div class="form-group col-xs-4 info">
+                                    <label>Informacje o nowych artykułach i ofertach prosto na Twój e-mail</label>
+                                </div>
+                            </div>
+                            <form class="form-inline" method="post" action="{% url 'newsletter:verify' %}">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="{{ newsletterform.name.id_for_label }}">Imię </label>
+                                    {{ newsletterform.name }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="{{ newsletterform.email.id_for_label }}">E-mail </label>
+                                    {{ newsletterform.email }}
+                                </div>
+                                <button type="submit" class="btn btn-default btn-submit">Zapisz Mnie</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
         {% endif %}
 
         {% endfor %}

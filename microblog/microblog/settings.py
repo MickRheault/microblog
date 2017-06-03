@@ -14,6 +14,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 INTERNAL_IPS = '127.0.0.1'
+DOMAIN = 'http://127.0.0.1:8000'
 
 # Application definition
 
@@ -39,7 +40,8 @@ INSTALLED_APPS = [
     'other',
     'core',
     'file',
-    'api'
+    'api',
+    'newsletter'
 ]
 
 MIDDLEWARE = [
@@ -93,7 +95,7 @@ WSGI_APPLICATION = 'microblog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db1.sqlite3'),
     }
 }
 
@@ -158,6 +160,15 @@ MARKDOWNX_MARKDOWN_EXTENSIONS = [
 
 # This must be always at the of file
 DEV_APPS = None
+
+# Email setup
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.example.net'
+EMAIL_HOST_USER = 'example_username'
+EMAIL_HOST_PASSWORD = 'example_password'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL = 'admin@example.com'
 
 try:
     from .local_settings import *

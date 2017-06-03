@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^other/', include('other.urls', namespace='other')),
     url(r'^tag/', include('tag.urls', namespace='tag')),
+    url(r'newsletter/', include('newsletter.urls', namespace='newsletter')),
     url(r'^api/v0.1/', include('api.urls', namespace='api')),
     url(r'^', include('article.urls', namespace='article')),
 ]

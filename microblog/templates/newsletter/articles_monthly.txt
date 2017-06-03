@@ -1,0 +1,4 @@
+Lista artykułów w tym miesiącu:
+    {% for article in articles %}
+        <a href="{{ domain }}{% url 'article:detail' article.slug %}">{{ article.title }}</a><br>
+    {% endfor %}
