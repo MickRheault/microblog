@@ -30,7 +30,7 @@
         <meta name="author" content="{{ site_meta.author }}">
     {% endblock %}
 
-    <title>{% block title %}{{ site_meta.title }}{% endblock %}</title>
+    <title>{% block title %}{{ site_meta.title }} - {{ site_meta.subheading }}{% endblock %}</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
