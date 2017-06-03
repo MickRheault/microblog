@@ -14,7 +14,7 @@ class ArticleAdmin(admin.ModelAdmin):
     fields = ('title', 'desc', 'text', 'image', 'publish', 'tags')
 
     def link(self, obj):
-        link = reverse('article:detail', kwargs={'slug': obj.slug})
+        link = reverse('article:preview', kwargs={'pk': obj.id})
         return '<a href="%s">%s</a>' % (link, link)
 
     link.allow_tags = True

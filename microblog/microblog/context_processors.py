@@ -1,3 +1,5 @@
+from django.utils import timezone
+
 from core.models import Navigation, SiteMeta, Footer
 
 from .settings import INSTALLED_APPS
@@ -5,7 +7,8 @@ from .settings import INSTALLED_APPS
 
 def settings(request):
     return {
-        'installed_apps': INSTALLED_APPS
+        'installed_apps': INSTALLED_APPS,
+        'cur_year': timezone.now().year
     }
 
 
@@ -24,4 +27,4 @@ def site_meta(request):
 def footer(request):
     obj = Footer.get_solo()
 
-    return  {'footer': obj}
+    return {'footer': obj}
