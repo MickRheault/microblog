@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% load static core markdown %}
 
-{% block header_type %}post{% endblock %}
-{% block header_grid %}col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1{% endblock %}
-{% block header_title %}<h1>{{ title }}</h1>{% endblock %}
-{% block header_hr %}{% endblock %}
-{% block header_subheading %}{% endblock %}
+    {% if title|length > 0 %}
+        {% block header_type %}post{% endblock %}
+        {% block header_grid %}col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1{% endblock %}
+        {% block header_title %}<h1>{{ title }}</h1>{% endblock %}
+        {% block header_hr %}{% endblock %}
+        {% block header_subheading %}{% endblock %}
+    {% endif %}
 {% block main_content %}
     <article>
         <div class="container">
