@@ -2,7 +2,9 @@
 
 {% block main_content %}
     <div class="container">
-
+        {% if articles|length == 0 %}
+            <p class="text-center">Nie ma nic, jest tylko pustka....</p>
+        {% endif %}
         {% for article in articles %}
             {% if forloop.counter|divisibleby:2 %}
                 <div class="row">
@@ -76,10 +78,10 @@
                                     {{ newsletterform.name }}
                                 </div>
                                 <div class="form-group">
-                                    <label for="{{ newsletterform.email.id_for_label }}">E-mail </label>
+                                    <label class="margin-left-10" for="{{ newsletterform.email.id_for_label }}">E-mail </label>
                                     {{ newsletterform.email }}
                                 </div>
-                                <button type="submit" class="btn btn-default btn-submit">Zapisz Mnie</button>
+                                <button type="submit" class="btn btn-default btn-submit pull-right">Zapisz Mnie</button>
                             </form>
                         </div>
                     </div>

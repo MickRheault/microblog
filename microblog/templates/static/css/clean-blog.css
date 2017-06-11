@@ -329,7 +329,7 @@ hr.small {
 }
 
 .post-preview-extra {
-    border: ridge 1px #bdc3c7;
+    border: solid 1px #bdc3c7;
     margin-bottom: 30px;
     padding: 0 15px 0 15px;
 }
@@ -575,7 +575,6 @@ article img {
 }
 
 #serch-nav .btn {
-    height: 100%;
     margin: 0;
     padding: 6px 12px 6px 12px;
     color: white;
@@ -602,4 +601,12 @@ article img {
 
 input {
     border-radius: 0 !important;
+}
+
+input[name="name"] {
+    width: 160px !important;
+}
+
+.margin-left-10 {
+    margin-left: 10px
 }
