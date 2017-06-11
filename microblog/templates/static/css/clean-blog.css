@@ -329,7 +329,7 @@ hr.small {
 }
 
 .post-preview-extra {
-    border: ridge 1px #bdc3c7;
+    border: solid 1px #bdc3c7;
     margin-bottom: 30px;
     padding: 0 15px 0 15px;
 }
@@ -606,4 +606,8 @@ input {
 
 input[name="name"] {
     width: 160px !important;
+}
+
+.margin-left-10 {
+    margin-left: 10px
 }
