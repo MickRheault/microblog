@@ -9,5 +9,5 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         email_list = EmailBase.objects.filter(verified=False,
-                                              added__gt=timezone.now() + timezone.timedelta(days=1))
+                                              added__lt=timezone.now() - timezone.timedelta(days=1))
         email_list.delete()
