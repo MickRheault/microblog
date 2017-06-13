@@ -1,5 +1,5 @@
 # Simple Microblog
-Blog based on [Clean Blog](https://github.com/BlackrockDigital/startbootstrap-clean-blog) template ([Preview](http://imgur.com/kRiysCm))
+Blog based on [Clean Blog](https://github.com/BlackrockDigital/startbootstrap-clean-blog) template
 
 ![](http://i.imgur.com/YKPc9lb.png)
 
