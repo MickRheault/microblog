@@ -145,7 +145,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 PROHIBITED_NAMES = ['author', 'tag', 'guest_book', 'other', 'file', 'api', 'lang']
 
 # Project version
-VERSION = '0.11.7'
+VERSION = '0.11.8'
 
 # Rest config
 REST_FRAMEWORK = {
