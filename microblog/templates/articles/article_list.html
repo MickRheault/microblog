@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
 
 {% block main_content %}
     <div class="container">
@@ -15,8 +16,13 @@
                 <div class="post-preview post-preview-extra">
                     <a href="{% url 'article:detail' article.slug %}">
                         <h3 class="post-title">{{ article.title }}</h3>
+                        {% if not article.image %}
                         <img class="img img-rounded"
-                             src="{{ article.image_url|default_if_none:'http://www.freevector.com/uploads/vector/preview/6044/FreeVector-Colorful-Shapes-Background.jpg' }}">
+                             src="{{ site_meta.image|thumbnail_url:'article_thumbnail' }}">
+                        {% else %}
+                            <img class="img img-rounded"
+                             src="{{ article.image|thumbnail_url:'article_thumbnail' }}">
+                        {% endif %}
                         <h3 class="post-subtitle">{{ article.desc }}</h3>
                     </a>
                     <p class="post-meta pull-left" style="margin-bottom: 10px">
