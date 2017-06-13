@@ -15,6 +15,9 @@ class Command(BaseCommand):
         email_list = [obj.email for obj in EmailBase.objects.filter(verified=True)]
         articles = Article.objects.filter(publish_date__month=timezone.now().month, publish=True)
 
+        if not articles.exists():
+            return
+
         html = render_to_string("newsletter/articles_monthly.html", {
             'articles': articles,
             'domain': settings.DOMAIN
