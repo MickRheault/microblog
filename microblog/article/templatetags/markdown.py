@@ -7,6 +7,7 @@ from microblog.settings import (
 
 register = template.Library()
 
+
 @register.filter(name="markdownify")
 def markdownify(content):
     md = markdown(

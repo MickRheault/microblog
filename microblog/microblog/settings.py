@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'solo',
+    'easy_thumbnails',
     # My apps
     'account',
     'article',
@@ -144,7 +145,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 PROHIBITED_NAMES = ['author', 'tag', 'guest_book', 'other', 'file', 'api', 'lang']
 
 # Project version
-VERSION = '0.11.7'
+VERSION = '0.11.8'
 
 # Rest config
 REST_FRAMEWORK = {
@@ -160,6 +161,12 @@ MARKDOWNX_MARKDOWN_EXTENSIONS = [
 
 # This must be always at the of file
 DEV_APPS = None
+
+THUMBNAIL_ALIASES = {
+    '': {
+        'article_thumbnail': {'size': (800, 80), 'crop': True},
+    },
+}
 
 # Email setup
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
