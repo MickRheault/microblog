@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static markdown %}
+{% load static markdown article_wrapper %}
 {% block meta %}
     <meta name="description" content="{{ article.desc }}">
     <meta name="keywords" content="{% for tag in article.tags.all %}{{ tag }},{% endfor %}">
@@ -22,7 +22,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    {{ article.text|markdownify|safe }}
+                    {{ article.text|markdownify|wrap_img|safe }}
                 </div>
             </div>
         </div>
@@ -45,5 +45,5 @@
 
 {% block extra_js %}
     <script src="{% static 'js/jquery.imgbox.js' %}"></script>
-    <script>$("#pic").imgbox({slideshow: false});</script>
+    <script>$(".pic").imgbox({slideshow: false});</script>
 {% endblock %}
