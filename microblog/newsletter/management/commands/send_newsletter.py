@@ -13,7 +13,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         email_list = [obj.email for obj in EmailBase.objects.filter(verified=True)]
-        articles = Article.objects.filter(publish_date__month=timezone.now().month, publish=True)
+        articles = Article.objects.filter(publish_date__month=(timezone.now() - timezone.timedelta(days=7)).month,
+                                          publish=True)
 
         if not articles.exists():
             return
