@@ -8,6 +8,7 @@ django-cleanup==0.4.2
 djangorestframework==3.6.3
 django-solo==1.1.2
 easy-thumbnails==2.4.1
+django-cors-headers==2.1.0
 
 # Django/Apps dependencies 
 Pillow==3.3.1

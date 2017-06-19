@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Third-party apps
+    'corsheaders',
     'markdownx',
     'captcha',
     'django_cleanup',
@@ -48,13 +49,13 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'microblog.urls'
@@ -145,7 +146,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 PROHIBITED_NAMES = ['author', 'tag', 'guest_book', 'other', 'file', 'api', 'lang']
 
 # Project version
-VERSION = '0.11.8'
+VERSION = '0.11.9'
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Rest config
 REST_FRAMEWORK = {
