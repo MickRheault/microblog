@@ -173,7 +173,7 @@ hr.small {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
     filter: grayscale(50%);
     -webkit-filter: grayscale(50%);
 }
@@ -279,8 +279,6 @@ hr.small {
 
 .post-preview > a > .post-title {
     font-size: 30px;
-    margin-top: 30px;
-    margin-bottom: 10px;
 }
 
 .post-preview > a > .post-subtitle {
