@@ -610,3 +610,16 @@ input[name="name"] {
 .margin-left-10 {
     margin-left: 10px
 }
+
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+    font-weight: normal;
+}
+
+blockquote p {
+    margin: 0;
+}
