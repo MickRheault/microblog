@@ -34,8 +34,7 @@
 
                     <div class="post-meta pull-right" style="padding-top: 8px">
                         {% for tag in article.tags.all %}
-                            <a href="{% url 'tag:list' tag.slug %}">{{ tag }}</a>
-                            {% if forloop.last %}{% else %},{% endif %}
+                            <a href="{% url 'tag:list' tag.slug %}">{{ tag }}</a>{% if forloop.last %}{% else %},{% endif %}
                         {% endfor %}
                     </div>
                     <div class="clearfix"></div>
@@ -59,8 +58,7 @@
 
                         <div class="post-meta pull-right">
                             {% for tag in articles.0.tags.all %}
-                                <a href="{% url 'tag:list' tag.slug %}">{{ tag }}</a>
-                                {% if forloop.last %}{% else %},{% endif %}
+                                <a href="{% url 'tag:list' tag.slug %}">{{ tag }}</a>{% if forloop.last %}{% else %},{% endif %}
                             {% endfor %}
                         </div>
                         <div class="clearfix"></div>
