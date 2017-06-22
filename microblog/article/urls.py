@@ -3,9 +3,10 @@ from django.views.decorators.cache import cache_page
 from django.conf import settings
 
 from .views import ArticleListView, ArticleDetailView, ArticleAuthorListView, LatestArticlesFeed, \
-    ArticlePreviewView, SearchView
+    ArticlePreviewView, SearchView, ChangeArticleStatus
 
 urlpatterns = [
+    url(r'article/change/status/$', ChangeArticleStatus.as_view(), name='change_status'),
     url(r'preview/(?P<pk>\d+)/$', ArticlePreviewView.as_view(), name='preview'),
     url(r'^$', ArticleListView.as_view(), name='list'),
     url(r'latest/feed/$', LatestArticlesFeed()),

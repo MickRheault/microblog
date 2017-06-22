@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.utils import timezone
 from django.utils.text import slugify
 from django.forms.widgets import Textarea
 from django.core.urlresolvers import reverse
@@ -11,7 +10,9 @@ from .models import Article
 
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'link', 'creation_date',)
-    fields = ('title', 'desc', 'text', 'image', 'publish', 'tags')
+    fields = ('title', 'desc', 'text', 'image', 'tags', 'status')
+    list_filter = ('status',)
+    readonly_fields = ('status',)
 
     def link(self, obj):
         link = reverse('article:preview', kwargs={'pk': obj.id})
@@ -21,10 +22,6 @@ class ArticleAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         obj.author = request.user
-
-        # Auto update publish date when publish is true
-        if form.cleaned_data['publish'] is True:
-            obj.publish_date = timezone.now()
 
         # Slugify title and save it as slug
         obj.slug = slugify(form.cleaned_data['title'], allow_unicode=True)
