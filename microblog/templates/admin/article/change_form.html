@@ -24,3 +24,12 @@
         <input type="hidden" name="url" value="{{ request.build_absolute_uri }}">
     </form>
 {% endblock %}
+{% block admin_change_form_document_ready %}
+    {{ block.super }}
+    <script>
+        setInterval(function () {
+            var input = document.getElementsByName('_continue')[0];
+            input.click();
+        }, 1000 * 60 * 30)
+    </script>
+{% endblock %}
