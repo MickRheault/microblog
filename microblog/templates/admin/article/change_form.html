@@ -1,5 +1,6 @@
 {% extends "admin/change_form.html" %}
-{% block content_title %}
+{% load article_tag %}
+{% block content_title  %}
     {% if title %}
         <h1>{{ title }}
             {% if adminform.form.instance.id %}
@@ -7,4 +8,28 @@
             {% endif %}
         </h1>
     {% endif %}
+{% endblock %}
+
+{% block submit_buttons_bottom %}
+    <div class="submit-row">
+       {% generate_status_submit adminform.form.instance.id %}
+    </div>
+
+    {{ block.super }}
+{% endblock %}
+{% block footer %}
+    <form id="status-form" method="post" action="{% url 'article:change_status' %}">
+        <input type="hidden" name="id" value="{{ adminform.form.instance.id }}" />
+        {% csrf_token %}
+        <input type="hidden" name="url" value="{{ request.build_absolute_uri }}">
+    </form>
+{% endblock %}
+{% block admin_change_form_document_ready %}
+    {{ block.super }}
+    <script>
+        setInterval(function () {
+            var input = document.getElementsByName('_continue')[0];
+            input.click();
+        }, 1000 * 60 * 30)
+    </script>
 {% endblock %}

@@ -1,9 +1,11 @@
 from django.contrib.syndication.views import Feed
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, View
 from django.http import Http404
 from django.core.urlresolvers import reverse_lazy
 from django.core.exceptions import PermissionDenied
 from django.db.models import Q
+from django.shortcuts import get_object_or_404, redirect
+from django.contrib import messages
 
 from .models import Article
 from newsletter.forms import NewsletterForm
@@ -104,3 +106,22 @@ class SearchView(ArticleMixin, ListView):
         if q:
             queryset = queryset.filter(Q(title__icontains=q)|Q(tags__title__iexact=q))
         return queryset
+
+
+class ChangeArticleStatus(View):
+    def post(self, request, *args, **kwargs):
+        id = request.POST.get('id', None)
+        url = request.POST.get('url', None)
+        transition_method = [key for key in request.POST.keys() if key.startswith("___")]
+
+        if not id or not url or len(transition_method) != 1:
+            raise Http404
+
+        transition_method = transition_method[0][3:]
+
+        obj = get_object_or_404(Article, pk=int(id))
+        getattr(obj, transition_method)()
+        obj.save()
+        messages.info(request, "Pomyślnie zmieniono status")
+
+        return redirect(url)

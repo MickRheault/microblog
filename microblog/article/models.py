@@ -1,5 +1,8 @@
 from django.db import models
 from django.conf import settings
+from django.utils import timezone
+
+from django_fsm import FSMIntegerField, transition, TransitionNotAllowed
 
 from tag.models import Tag
 from core.utils import image_directory_path
@@ -11,10 +14,22 @@ class PublishedManager(models.Manager):
     use_for_related_fields = True
 
     def published(self, **kwargs):
-        return self.filter(publish=True, **kwargs)
+        return self.filter(status=Article.PUBLISHED, **kwargs)
 
 
 class Article(models.Model):
+    DRAFT = 0
+    ACCEPTED = 1
+    PUBLISHED = 2
+    HIDDEN = 3
+
+    STATUS_CHOICES = (
+        (DRAFT, 'Wersja Robocza'),
+        (ACCEPTED, 'Zaakceptowane'),
+        (PUBLISHED, 'Opublikowane'),
+        (HIDDEN, 'Ukryte'),
+    )
+
     title = models.CharField(max_length=80, verbose_name='Tytuł', unique=True, validators=[validate_title])
     slug = models.SlugField(max_length=80, verbose_name='Slug', unique=True)
     text = models.TextField(verbose_name='Tekst')
@@ -22,9 +37,9 @@ class Article(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Autor')
     creation_date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(blank=True, verbose_name='Obraz', upload_to=image_directory_path)
-    publish = models.BooleanField(default=False, verbose_name='Opublikuj')
     publish_date = models.DateTimeField(blank=True, null=True)
     tags = models.ManyToManyField(Tag, verbose_name='Tagi', related_name='articles')
+    status = FSMIntegerField(choices=STATUS_CHOICES, default=DRAFT, protected=True)
 
     objects = PublishedManager()
 
@@ -42,3 +57,23 @@ class Article(models.Model):
             return self.image.url
         else:
             return None
+
+    @transition(field=status, source=DRAFT, target=ACCEPTED, custom=dict(admin=True))
+    def accepted(self):
+        pass
+
+    @transition(field=status, source=ACCEPTED, target=PUBLISHED)
+    def published(self):
+        self.publish_date = timezone.now()
+
+    @transition(field=status, source=ACCEPTED, target=DRAFT)
+    def back_to_draft(self):
+        pass
+
+    @transition(field=status, source=[DRAFT, ACCEPTED, PUBLISHED], target=HIDDEN)
+    def hidden(self):
+        self.publish_date = None
+
+    @transition(field=status, source=HIDDEN, target=DRAFT)
+    def draft(self):
+        pass
