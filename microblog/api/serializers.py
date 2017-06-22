@@ -8,7 +8,7 @@ from tag.models import Tag
 class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
-        fields = ('id', 'title', 'desc', 'author', 'creation_date', 'tags')
+        fields = ('id', 'title', 'desc', 'author', 'creation_date', 'tags', 'status')
 
 
 class ArticleAddSerializer(serializers.ModelSerializer):
