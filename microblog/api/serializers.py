@@ -8,7 +8,7 @@ from tag.models import Tag
 class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
-        fields = ('title', 'desc', 'author', 'creation_date', 'tags')
+        fields = ('id', 'title', 'desc', 'author', 'creation_date', 'tags')
 
 
 class ArticleAddSerializer(serializers.ModelSerializer):
@@ -20,7 +20,7 @@ class ArticleAddSerializer(serializers.ModelSerializer):
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
-        fields = ('title', 'created_by', 'creation_date')
+        fields = ('id', 'title', 'created_by', 'creation_date')
 
 
 class TagAddSerializer(serializers.ModelSerializer):
@@ -32,4 +32,4 @@ class TagAddSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = settings.AUTH_USER_MODEL
-        fields = ('username', 'first_name', 'last_name')
+        fields = ('id', 'username', 'first_name', 'last_name')
