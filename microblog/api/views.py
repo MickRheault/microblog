@@ -8,22 +8,23 @@ from tag.models import Tag
 
 from .serializers import ArticleSerializer, ArticleAddSerializer, TagSerializer, TagAddSerializer, UserSerializer
 from .mixins import ListSerializerMixin, LastListSerializerMixin, DetailSerializerMixin, \
-    CreationMixin, DeleteMixin
+    CreationMixin, DeleteMixin, ArticleListSerializerMixin, ArticleLastListSerializerMixin, \
+    ArticleDetailSerializerMixin
 
 
-class ArticleList(ListSerializerMixin, APIView):
+class ArticleList(ArticleListSerializerMixin, APIView):
     http_method_names = ['get']
     model = Article
     serializer = ArticleSerializer
 
 
-class ArticleListLast(LastListSerializerMixin, APIView):
+class ArticleListLast(ArticleLastListSerializerMixin, APIView):
     http_method_names = ['get']
     model = Article
     serializer = ArticleSerializer
 
 
-class ArticleDetail(DetailSerializerMixin, APIView):
+class ArticleDetail(ArticleDetailSerializerMixin, APIView):
     http_method_names = ['get']
     model = Article
     serializer = ArticleSerializer

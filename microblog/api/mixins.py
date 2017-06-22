@@ -18,6 +18,16 @@ class LastListSerializerMixin(ListSerializerMixin):
         return self.model.objects.all()[:int(self.kwargs.get('limit', 1))]
 
 
+class ArticleListSerializerMixin(ListSerializerMixin):
+    def get_queryset(self):
+        return self.model.objects.published()
+
+
+class ArticleLastListSerializerMixin(ListSerializerMixin):
+    def get_queryset(self):
+        return self.model.objects.published()[:int(self.kwargs.get('limit', 1))]
+
+
 class DetailSerializerMixin(object):
     def get(self, request, *args, **kwargs):
         serializer = self.serializer(self.get_queryset())
@@ -25,6 +35,11 @@ class DetailSerializerMixin(object):
 
     def get_queryset(self):
         return get_object_or_404(self.model, pk=int(self.kwargs['pk']))
+
+
+class ArticleDetailSerializerMixin(DetailSerializerMixin):
+    def get_queryset(self):
+        return get_object_or_404(self.model, pk=int(self.kwargs['pk']), status=self.model.PUBLISHED)
 
 
 class CreationMixin(object):
