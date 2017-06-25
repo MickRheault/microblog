@@ -2,8 +2,9 @@ from django.conf.urls import url
 from django.views.decorators.cache import cache_page
 from django.conf import settings
 
-from .views import ArticleListView, ArticleDetailView, ArticleAuthorListView, LatestArticlesFeed, \
+from .views import ArticleListView, ArticleDetailView, ArticleAuthorListView, \
     ArticlePreviewView, SearchView, ChangeArticleStatus
+from .feeds import LatestArticlesFeed
 
 urlpatterns = [
     url(r'article/change/status/$', ChangeArticleStatus.as_view(), name='change_status'),
