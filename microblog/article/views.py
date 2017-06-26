@@ -100,6 +100,10 @@ class ChangeArticleStatus(View):
         transition_method = transition_method[0][3:]
 
         obj = get_object_or_404(Article, pk=int(id))
+
+        if transition_method not in [method.name for method in list(Article.get_available_status_transitions(obj))]:
+            raise Http404
+
         getattr(obj, transition_method)()
         obj.save()
         messages.info(request, "Pomyślnie zmieniono status")
