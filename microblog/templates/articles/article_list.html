@@ -27,7 +27,7 @@
                     </a>
                     <p class="post-meta pull-left" style="margin-bottom: 10px">
                         <a href="{% url 'article:author-list' article.author %}">
-                            <img src="{{ article.author.avatar.url }}" class="img-circle img-avatar"/>
+                            <img src="{{ article.author.avatar_url }}" class="img-circle img-avatar"/>
                         </a>
                         {{ article.publish_date|date:"d M Y" }}
                     </p>
@@ -51,7 +51,7 @@
                         </a>
                         <p class="post-meta pull-left" style="margin-bottom: 10px">
                             <a href="{% url 'article:author-list' articles.0.author %}">
-                                <img src="{{ articles.0.author.avatar.url }}" class="img-circle img-avatar"/>
+                                <img src="{{ articles.0.author.avatar_url }}" class="img-circle img-avatar"/>
                             </a>
                             {{ articles.0.publish_date|date:"d M Y" }}
                         </p>

@@ -29,6 +29,12 @@ class SiteMeta(SingletonModel):
     class Meta:
         verbose_name = "Ustawienia strony"
 
+    @property
+    def image_url(self):
+        if self.image and hasattr(self.image, 'url'):
+            return self.image.url
+        else:
+            return None
 
 class Footer(SingletonModel):
     twitter = models.URLField(blank=True)

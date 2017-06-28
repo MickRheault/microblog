@@ -11,9 +11,11 @@
 {% endblock %}
 
 {% block submit_buttons_bottom %}
+    {% if adminform.form.instance.id %}
     <div class="submit-row">
        {% generate_status_submit adminform.form.instance.id %}
     </div>
+    {% endif %}
 
     {{ block.super }}
 {% endblock %}
