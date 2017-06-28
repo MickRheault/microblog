@@ -40,6 +40,7 @@ class Article(models.Model):
     publish_date = models.DateTimeField(blank=True, null=True)
     tags = models.ManyToManyField(Tag, verbose_name='Tagi', related_name='articles')
     status = FSMIntegerField(choices=STATUS_CHOICES, default=DRAFT, protected=True)
+    to_publish = models.DateTimeField(blank=True, null=True, verbose_name="Kiedy opublikować")
 
     objects = PublishedManager()
 
@@ -60,20 +61,22 @@ class Article(models.Model):
 
     @transition(field=status, source=DRAFT, target=ACCEPTED, custom=dict(admin=True))
     def accepted(self):
-        pass
+        self.to_publish = None
 
     @transition(field=status, source=ACCEPTED, target=PUBLISHED)
     def published(self):
         self.publish_date = timezone.now()
+        self.to_publish = None
 
     @transition(field=status, source=ACCEPTED, target=DRAFT)
     def back_to_draft(self):
-        pass
+        self.to_publish = None
 
-    @transition(field=status, source=[DRAFT, ACCEPTED, PUBLISHED], target=HIDDEN)
+    @transition(field=status, source=PUBLISHED, target=HIDDEN)
     def hidden(self):
-        self.publish_date = None
+        self.to_publish = None
 
     @transition(field=status, source=HIDDEN, target=DRAFT)
     def draft(self):
-        pass
+        self.publish_date = None
+        self.to_publish = None
