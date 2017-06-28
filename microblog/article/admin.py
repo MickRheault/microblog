@@ -9,7 +9,7 @@ from .models import Article
 
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'link', 'creation_date', 'status')
+    list_display = ('title', 'author', 'link', 'creation_date', 'status', 'to_publish')
     fields = ('title', 'desc', 'text', 'image', 'tags', 'status')
     list_filter = ('status',)
     readonly_fields = ('status',)
@@ -36,5 +36,16 @@ class ArticleAdmin(admin.ModelAdmin):
             kwargs['widget'] = AdminMarkdownxWidget
 
         return super(ArticleAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+
+    def get_fields(self, request, obj=None):
+        if obj is None:
+            return super().get_fields(request, obj)
+        fields = self.fields or list()
+        fields = list(fields)
+
+        if obj.status == Article.ACCEPTED:
+            fields.append('to_publish')
+
+        return fields
 
 admin.site.register(Article, ArticleAdmin)
