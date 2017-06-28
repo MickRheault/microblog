@@ -17,6 +17,6 @@ class User(AbstractUser):
     @property
     def avatar_url(self):
         if self.avatar and hasattr(self.avatar, 'url'):
-            return self.image.url
+            return self.avatar.url
         else:
             return None
