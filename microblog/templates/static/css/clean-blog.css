@@ -174,8 +174,6 @@ hr.small {
     background-size: cover;
     -o-background-size: cover;
     margin-bottom: 25px;
-    filter: grayscale(50%);
-    -webkit-filter: grayscale(50%);
 }
 
 .intro-header .site-heading,
@@ -183,6 +181,7 @@ hr.small {
 .intro-header .page-heading {
     padding: 100px 0 50px;
     color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
 
 @media only screen and (min-width: 768px) {
