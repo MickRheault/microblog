@@ -64,6 +64,7 @@ hr.small {
     width: 100%;
     z-index: 3;
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-shadow: 2px 1px 4px rgba(0, 0, 0, 1);
 }
 
 .navbar-custom .navbar-brand {
@@ -135,6 +136,7 @@ hr.small {
         -webkit-transition: -webkit-transform 0.3s;
         -moz-transition: -moz-transform 0.3s;
         transition: transform 0.3s;
+        text-shadow: none;
     }
 
     .navbar-custom.is-fixed .navbar-brand {
