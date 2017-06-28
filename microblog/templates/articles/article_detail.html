@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block header_type %}post{% endblock %}
-{% block header_grid %}col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1{% endblock %}
+{% block header_grid %}col-sm-10 col-sm-offset-1{% endblock %}
 {% block header_image %}{{ article.image_url|default_if_none:site_meta.image_url }}{% endblock %}
 {% block header_title %}<h1>{{ article.title }}</h1>{% endblock %}
 {% block header_hr %}{% endblock %}
@@ -21,7 +21,7 @@
     <article>
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
                     {{ article.text|markdownify|wrap_img|safe }}
                 </div>
             </div>
@@ -31,7 +31,7 @@
     <section class="about-author">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
                     <a href="mailto:{{ article.author.email }}">
                         <img src="{{ article.author.avatar_url }}" class="img img-circle"  style="cursor: pointer"/>
                     </a>
