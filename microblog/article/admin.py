@@ -9,7 +9,7 @@ from .models import Article
 
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'link', 'creation_date',)
+    list_display = ('title', 'author', 'link', 'creation_date', 'status')
     fields = ('title', 'desc', 'text', 'image', 'tags', 'status')
     list_filter = ('status',)
     readonly_fields = ('status',)
