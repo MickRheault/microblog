@@ -89,6 +89,12 @@ class SearchView(ArticleMixin, ListView):
 
 
 class ChangeArticleStatus(View):
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_staff and not request.user.is_superuser:
+            raise PermissionDenied
+
+        return super().dispatch(request, *args, **kwargs)
+
     def post(self, request, *args, **kwargs):
         id = request.POST.get('id', None)
         url = request.POST.get('url', None)
