@@ -14,7 +14,7 @@ class PublishedManager(models.Manager):
     use_for_related_fields = True
 
     def published(self, **kwargs):
-        return self.filter(status=Article.PUBLISHED, **kwargs)
+        return self.filter(status=Article.PUBLISHED, **kwargs).order_by('-publish_date')
 
 
 class Article(models.Model):
