@@ -597,7 +597,12 @@ input {
 }
 
 input[name="name"] {
-    width: 160px !important;
+    width: 180px !important;
+}
+
+input[name="email"] {
+    width: 240px !important;
+    margin-left: 20px;
 }
 
 .margin-left-10 {

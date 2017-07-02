@@ -9,9 +9,11 @@ class NewsletterForm(ModelForm):
         fields = ('name', 'email')
         widgets = {
             'name': TextInput(attrs={
-                'class': 'form-control'
+                'class': 'form-control',
+                'placeholder': 'IMIĘ'
             }),
             'email': TextInput(attrs={
                 'class': 'form-control',
+                'placeholder': 'E-MAIL'
             })
         }
