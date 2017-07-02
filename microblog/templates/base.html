@@ -77,9 +77,6 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="{% url 'article:list' %}">Strona główna</a>
-                </li>
                 {% if 'guest_book' in installed_apps %}
                     <li>
                         <a href="{% url 'guest-book:index' %}">Księga gości</a>
