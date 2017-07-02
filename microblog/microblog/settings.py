@@ -146,7 +146,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 PROHIBITED_NAMES = ['author', 'tag', 'guest_book', 'other', 'file', 'api', 'lang']
 
 # Project version
-VERSION = '0.12.5'
+VERSION = '0.12.6'
 
 CORS_ORIGIN_ALLOW_ALL = True
 
@@ -156,6 +156,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ),
 }
+
+# Date
+DATE_FORMAT = "j N Y"
 
 # Markdownx setup
 MARKDOWNX_MARKDOWN_EXTENSIONS = [

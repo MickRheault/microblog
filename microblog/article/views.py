@@ -84,7 +84,7 @@ class SearchView(ArticleMixin, ListView):
         q = self.request.GET.get('q')
 
         if q:
-            queryset = queryset.filter(Q(title__icontains=q)|Q(tags__title__iexact=q))
+            queryset = queryset.filter(Q(title__icontains=q)|Q(tags__title__iexact=q)).distinct()
         return queryset
 
 
