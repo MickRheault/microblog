@@ -157,6 +157,9 @@ REST_FRAMEWORK = {
     ),
 }
 
+# Date
+DATE_FORMAT = "j N Y"
+
 # Markdownx setup
 MARKDOWNX_MARKDOWN_EXTENSIONS = [
     'markdown.extensions.extra'
