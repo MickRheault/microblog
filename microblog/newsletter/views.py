@@ -44,7 +44,6 @@ class NewsletterVerficationView(View):
             raise Http404
 
         obj.token = token
-        obj.save()
 
         html = render_to_string("newsletter/email/verification.html", {
             'token': token,
@@ -57,6 +56,8 @@ class NewsletterVerficationView(View):
 
         send_mail('Potwierdzenie adresu', html_message=html, message=txt,
                   from_email=settings.EMAIL, recipient_list=[obj.email, ], fail_silently=False)
+
+        obj.save()
 
         return render(request, self.template_name, context)
 
