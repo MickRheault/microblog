@@ -38,7 +38,7 @@ class ArticleDetailView(ArticleMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['tags'] = Tag.objects.annotate(Count("articles")).\
+        context['tags'] = Tag.objects.filter(articles__status=Article.PUBLISHED).annotate(Count("articles")).\
             filter(articles__count__gt=0).order_by('-articles__count')
         context['related_articles'] = Article.objects.published().\
             filter(tags__in=self.object.tags.all()).distinct().\
