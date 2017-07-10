@@ -36,6 +36,7 @@ class SiteMeta(SingletonModel):
         else:
             return None
 
+
 class Footer(SingletonModel):
     twitter = models.URLField(blank=True)
     facebook = models.URLField(blank=True)
@@ -46,6 +47,18 @@ class Footer(SingletonModel):
 
     class Meta:
         verbose_name = "Stopka"
+
+
+class Link(models.Model):
+    name = models.CharField(max_length=255, verbose_name="Nazwa")
+    url = models.URLField()
+
+    class Meta:
+        verbose_name = 'Link'
+        verbose_name_plural = 'Linki'
+
+    def __str__(self):
+        return self.name
 
 
 from .signals import *

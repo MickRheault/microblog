@@ -13,34 +13,70 @@
 {% block header_title %}<h1>{{ article.title }}</h1>{% endblock %}
 {% block header_hr %}{% endblock %}
 {% block header_subheading %}{% endblock %}
-{% block header_meta %}<span class="meta">Wrzucone przez <a href="{% url 'article:author-list' article.author %}">{{ article.author }}</a> dnia {{ article.publish_date|date }}</span>{% endblock %}
+{% block header_meta %}
+    <span class="meta">Wrzucone przez <a href="{% url 'article:author-list' article.author %}">{{ article.author }}</a> dnia {{ article.publish_date|date }}</span>{% endblock %}
 
 {% block extra_css %}
     <link href="{% static 'css/imgbox.css' %}" rel="stylesheet">{% endblock %}
 
 {% block main_content %}
-    <article>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1">
+                <article>
                     {{ article.text|markdownify|wrap_img|safe }}
-                </div>
+                </article>
+            </div>
+            <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
+                {% if tags %}
+                    <div class="side-box">
+                        <h4>popularne tagi</h4>
+                        <hr>
+                        {% for tag in tags %}
+                            <span>
+                            <a href="{% url 'tag:list' tag.slug %}">{{ tag.title }}[{{ tag.articles__count }}]</a>
+                        </span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if related_articles %}
+                    <div class="side-box">
+                        <h4>powiązane</h4>
+                        <hr>
+                        {% for article in related_articles %}
+                            <li>
+                                <a href="{% url 'article:detail' article.slug %}">{{ article.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if links %}
+                    <div class="side-box">
+                        <h4>linki</h4>
+                        <hr>
+                        {% for link in links %}
+                            <li>
+                                <a href="{{ link.url }}">{{ link.name }}</a>
+                            </li>
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
         </div>
-    </article>
+    </div>
     {% if article.author.avatar and article.author.about_me %}
-    <section class="about-author">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
-                    <a href="mailto:{{ article.author.email }}">
-                        <img src="{{ article.author.avatar_url }}" class="img img-circle"  style="cursor: pointer"/>
-                    </a>
-                    {{ article.author.about_me }}
+        <section class="about-author">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+                        <a href="mailto:{{ article.author.email }}">
+                            <img src="{{ article.author.avatar_url }}" class="img img-circle" style="cursor: pointer"/>
+                        </a>
+                        {{ article.author.about_me }}
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
     {% endif %}
 {% endblock %}
 

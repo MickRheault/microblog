@@ -621,3 +621,40 @@ article h6 {
 blockquote p {
     margin: 0;
 }
+
+.side-box {
+    margin-top: 30px;
+    background-color: black;
+    padding: 10px;
+    color: white;
+    line-height: 140%;
+}
+
+.side-box a {
+    color: white;
+    font-size: 0.85em;
+}
+
+.side-box p {
+    margin: 0;
+}
+
+.side-box ul {
+    padding-left: 20px;
+}
+
+.side-box h4 {
+    text-transform: uppercase;
+}
+
+.side-box p a {
+    text-decoration: none;
+}
+
+.side-box p a:hover {
+    text-decoration: underline;
+}
+
+.side-box span {
+    text-transform: uppercase;
+}
