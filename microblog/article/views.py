@@ -1,12 +1,14 @@
 from django.views.generic import ListView, DetailView, View
 from django.http import Http404
 from django.core.exceptions import PermissionDenied
-from django.db.models import Q
+from django.db.models import Q, Count
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
 
 from .models import Article
 from newsletter.forms import NewsletterForm
+from tag.models import Tag
+from core.models import Link
 
 
 class ArticleMixin(object):
@@ -32,6 +34,18 @@ class ArticleListView(ArticleMixin, ListView):
 class ArticleDetailView(ArticleMixin, DetailView):
     template_name = 'articles/article_detail.html'
     context_object_name = 'article'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['tags'] = Tag.objects.annotate(Count("articles")).\
+            filter(articles__count__gt=0).order_by('-articles__count')
+        context['related_articles'] = Article.objects.published().\
+            filter(tags__in=self.object.tags.all()).distinct().\
+            exclude(pk=self.object.pk)[:4]
+        context['links'] = Link.objects.all()
+
+        return context
 
 
 class ArticlePreviewView(DetailView):
