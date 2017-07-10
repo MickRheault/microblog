@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% block title %}{{ article.title }} - {{ site_meta.title }}{% endblock %}
 {% load static markdown article_wrapper %}
 {% block meta %}
     <meta name="description" content="{{ article.desc }}">
