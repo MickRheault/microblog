@@ -78,9 +78,17 @@
             </div>
         </section>
     {% endif %}
+    <div class="container" style="margin-top: 50px">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1">
+                <div id="disqus_thread"></div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block extra_js %}
     <script src="{% static 'js/jquery.imgbox.js' %}"></script>
     <script>$(".pic").imgbox({slideshow: false});</script>
+    <script src="{% static 'js/disqus.js' %}"></script>
 {% endblock %}
