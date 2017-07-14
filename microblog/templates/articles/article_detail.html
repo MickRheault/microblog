@@ -34,7 +34,7 @@
                         <hr>
                         {% for tag in tags %}
                             <span>
-                            <a href="{% url 'tag:list' tag.slug %}">{{ tag.title }}[{{ tag.articles__count }}]</a>
+                            <a href="{% url 'tag:list' tag.slug %}">{{ tag.title }}({{ tag.articles__count }})</a>
                         </span>
                         {% endfor %}
                     </div>
@@ -57,6 +57,17 @@
                         {% for link in links %}
                             <li>
                                 <a href="{{ link.url }}">{{ link.name }}</a>
+                            </li>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if articles_years %}
+                    <div class="side-box">
+                        <h4>Lata</h4>
+                        <hr>
+                        {% for article in articles_years %}
+                            <li>
+                                <a href="{% url 'article:year' article.year %}">{{ article.year }} ({{ article.c }}) </a>
                             </li>
                         {% endfor %}
                     </div>
@@ -85,10 +96,10 @@
             </div>
         </div>
     </div>
+    {% include 'articles/snippets/disqus.html' %}
 {% endblock %}
 
 {% block extra_js %}
     <script src="{% static 'js/jquery.imgbox.js' %}"></script>
     <script>$(".pic").imgbox({slideshow: false});</script>
-    <script src="{% static 'js/disqus.js' %}"></script>
 {% endblock %}
