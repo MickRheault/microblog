@@ -52,7 +52,7 @@ class ArticleDetailView(ArticleMixin, DetailView):
 
 
 class ArticlePreviewView(DetailView):
-    template_name = 'articles/article_detail.html'
+    template_name = 'articles/article_preview.html'
     context_object_name = 'article'
 
     def dispatch(self, request, *args, **kwargs):
