@@ -85,10 +85,10 @@
             </div>
         </div>
     </div>
+    {% include 'articles/snippets/disqus.html' %}
 {% endblock %}
 
 {% block extra_js %}
     <script src="{% static 'js/jquery.imgbox.js' %}"></script>
     <script>$(".pic").imgbox({slideshow: false});</script>
-    <script src="{% static 'js/disqus.js' %}"></script>
 {% endblock %}
