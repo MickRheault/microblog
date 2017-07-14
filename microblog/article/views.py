@@ -40,7 +40,7 @@ class ArticleDetailView(ArticleMixin, DetailView):
         context = super().get_context_data(**kwargs)
 
         context['tags'] = Tag.objects.filter(articles__status=Article.PUBLISHED).annotate(Count("articles")).\
-            filter(articles__count__gt=0).order_by('-articles__count').values('slug', 'title')
+            filter(articles__count__gt=0).order_by('-articles__count').values('slug', 'title', 'articles__count')
         context['related_articles'] = Article.objects.published().\
             filter(tags__in=self.object.tags.all()).distinct().\
             exclude(pk=self.object.pk).values('slug', 'title')[:4]
