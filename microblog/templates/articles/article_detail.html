@@ -34,7 +34,7 @@
                         <hr>
                         {% for tag in tags %}
                             <span>
-                            <a href="{% url 'tag:list' tag.slug %}">{{ tag.title }}[{{ tag.articles__count }}]</a>
+                            <a href="{% url 'tag:list' tag.slug %}">{{ tag.title }}({{ tag.articles__count }})</a>
                         </span>
                         {% endfor %}
                     </div>
