@@ -61,6 +61,17 @@
                         {% endfor %}
                     </div>
                 {% endif %}
+                {% if articles_years %}
+                    <div class="side-box">
+                        <h4>Lata</h4>
+                        <hr>
+                        {% for article in articles_years %}
+                            <li>
+                                <a href="{% url 'article:year' article.year %}">{{ article.year }} ({{ article.c }}) </a>
+                            </li>
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>

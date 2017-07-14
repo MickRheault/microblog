@@ -4,6 +4,7 @@ from django.core.exceptions import PermissionDenied
 from django.db.models import Q, Count
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
+from django.db.models.functions import ExtractYear
 
 from .models import Article
 from newsletter.forms import NewsletterForm
@@ -44,6 +45,8 @@ class ArticleDetailView(ArticleMixin, DetailView):
             filter(tags__in=self.object.tags.all()).distinct().\
             exclude(pk=self.object.pk)[:4]
         context['links'] = Link.objects.all()
+        context['articles_years'] = Article.objects.published().annotate(year=ExtractYear('publish_date')).\
+            values('year').annotate(c=Count('id')).values('year', 'c').order_by('-year')
 
         return context
 
@@ -99,6 +102,23 @@ class SearchView(ArticleMixin, ListView):
 
         if q:
             queryset = queryset.filter(Q(title__icontains=q)|Q(tags__title__iexact=q)).distinct()
+        return queryset
+
+
+class ArticleYearView(ArticleMixin, ListView):
+    template_name = 'articles/article_list.html'
+    paginate_by = 7
+    context_object_name = 'articles'
+
+    def get_queryset(self):
+        year = self.kwargs.get('year')
+
+        # in case of None return 404
+        if not year:
+            raise Http404
+
+        queryset = super().get_queryset()
+        queryset = queryset.filter(publish_date__year=year)
         return queryset
 
 
