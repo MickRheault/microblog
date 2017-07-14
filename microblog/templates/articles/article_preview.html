@@ -1,0 +1,37 @@
+{% extends 'articles/article_detail_base.html' %}
+{% load static markdown article_wrapper %}
+
+{% block main_content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1">
+                <article>
+                    {{ article.text|markdownify|wrap_img|safe }}
+                </article>
+            </div>
+            <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
+            </div>
+        </div>
+    </div>
+    {% if article.author.avatar and article.author.about_me %}
+        <section class="about-author">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1">
+                        <a href="mailto:{{ article.author.email }}">
+                            <img src="{{ article.author.avatar_url }}" class="img img-circle" style="cursor: pointer"/>
+                        </a>
+                        {{ article.author.about_me }}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+    <div class="container" style="margin-top: 50px">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1">
+                <div id="disqus_thread"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
