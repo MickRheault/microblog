@@ -17,7 +17,7 @@
                         {% for tag in tags %}
                             <span>
                             <a href="{% url 'tag:list' tag.slug %}">{{ tag.title }}({{ tag.articles__count }})</a>
-                        </span>
+                            </span>
                         {% endfor %}
                     </div>
                 {% endif %}
@@ -26,31 +26,31 @@
                         <h4>powiązane</h4>
                         <hr>
                         {% for article in related_articles %}
-                            <li>
+                            <span>
                                 <a href="{% url 'article:detail' article.slug %}">{{ article.title }}</a>
-                            </li>
+                            </span><br>
                         {% endfor %}
                     </div>
                 {% endif %}
                 {% if links %}
                     <div class="side-box">
-                        <h4>linki</h4>
+                        <h4>ciekawe linki</h4>
                         <hr>
                         {% for link in links %}
-                            <li>
+                            <span>
                                 <a href="{{ link.url }}">{{ link.name }}</a>
-                            </li>
+                            </span><br>
                         {% endfor %}
                     </div>
                 {% endif %}
                 {% if articles_years %}
                     <div class="side-box">
-                        <h4>Lata</h4>
+                        <h4>Artykuły lata</h4>
                         <hr>
                         {% for article in articles_years %}
-                            <li>
+                            <span>
                                 <a href="{% url 'article:year' article.year %}">{{ article.year }} ({{ article.c }}) </a>
-                            </li>
+                            </span><br>
                         {% endfor %}
                     </div>
                 {% endif %}
